@@ -898,6 +898,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <StagesSection />
+
       {/* ── 7. GALLERY ── */}
       <section className="gallery-section" id="gallery">
         <div className="gallery-inner">
@@ -1055,8 +1057,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <StagesSection />
 
       {/* ── 8. SCHEDULE ── */}
       <section className="schedule-section" id="schedule">
