@@ -249,91 +249,6 @@ export default function HomePage() {
         ease: "power2.out",
       });
 
-      // ── HERO ENTRANCE ──
-      const tl = gsap.timeline({ delay: 0.5 });
-      tl.from(".hero-label", {
-        opacity: 0,
-        y: 16,
-        duration: 0.7,
-        ease: "power2.out",
-      })
-        .from(
-          ".hero-letter",
-          {
-            y: "110%",
-            opacity: 0,
-            stagger: 0.07,
-            duration: 1.1,
-            ease: "power4.out",
-          },
-          "-=0.3",
-        )
-        .from(
-          ".hero-surname",
-          { opacity: 0, y: 30, duration: 0.9, ease: "power3.out" },
-          "-=0.5",
-        )
-        .from(
-          ".hero-subtitle > *",
-          {
-            opacity: 0,
-            y: 14,
-            stagger: 0.07,
-            duration: 0.6,
-            ease: "power2.out",
-          },
-          "-=0.4",
-        )
-        .from(
-          ".scroll-indicator",
-          { opacity: 0, duration: 1, ease: "power2.out" },
-          "-=0.2",
-        )
-        .from(
-          ".hero-portrait-wrap",
-          {
-            y: 50,
-            opacity: 0,
-            duration: 1.6,
-            ease: "power3.out",
-          },
-          "-=1.8",
-        );
-
-      // Scroll line pulse
-      gsap.to(".scroll-line", {
-        scaleY: 0,
-        transformOrigin: "top",
-        duration: 1.4,
-        ease: "power2.inOut",
-        repeat: -1,
-        yoyo: true,
-        delay: 2.5,
-      });
-
-      // Hero name parallax on scroll
-      gsap.to(".hero-name-wrap", {
-        y: -100,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".hero",
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-
-      // Portrait slower parallax (less than text — creates depth)
-      gsap.to(".hero-portrait-wrap", {
-        y: 40,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".hero",
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
 
       // ── ABOUT ──
       gsap.from(".about-section .section-label", {
@@ -579,7 +494,7 @@ export default function HomePage() {
       {/* ── NAV ── */}
       <nav className="nav" role="navigation">
         <a href="#hero" className="nav-logo">
-          Lizi Ramishvili
+          LR
         </a>
         <ul className="nav-links">
           <li>
@@ -636,46 +551,26 @@ export default function HomePage() {
 
       {/* ── 1. HERO ── */}
       <section className="hero" id="hero">
-        {/* Portrait — transparent PNG, bottom-anchored */}
-        <div className="hero-portrait-wrap" aria-hidden="true">
-          <div className="hero-portrait-glow" />
-          <Image
-            className="hero-portrait-img"
-            src="/images/hero-img.png"
-            alt="Lizi Ramishvili playing her cello"
-            fill
-            sizes="(max-width: 600px) 58vw, (max-width: 900px) 48vw, 40vw"
-            priority
-          />
-        </div>
+        {/* Video background */}
+        <video
+          className="hero-video"
+          src="/hero-vid.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+        />
+        <div className="hero-overlay" aria-hidden="true" />
+
         <div className="hero-content">
-          <span className="hero-label">Classical Cellist · Concert Artist</span>
-          <div className="hero-name-wrap" aria-label="Lizi">
-            {"LIZI".split("").map((l, i) => (
-              <span key={i} className="hero-letter">
-                {l}
-              </span>
-            ))}
-          </div>
-          <div className="hero-surname" aria-label="Ramishvili">
-            Ramishvili
-          </div>
-          <div className="hero-subtitle">
-            <span>Tbilisi</span>
-            <span className="hero-dot" aria-hidden="true">
-              ·
-            </span>
-            <span>London</span>
-            <span className="hero-dot" aria-hidden="true">
-              ·
-            </span>
-            <span>Vienna</span>
-            <span className="hero-dot" aria-hidden="true">
-              ·
-            </span>
-            <span>Berlin</span>
-          </div>
+          <span className="hero-eyebrow">Georgian Cellist</span>
+          <h1 className="hero-title">
+            <span className="hero-first">Lizi</span>
+            <span className="hero-last">Ramishvili</span>
+          </h1>
         </div>
+
         <div className="scroll-indicator" aria-hidden="true">
           <span>Scroll</span>
           <div className="scroll-line" />
