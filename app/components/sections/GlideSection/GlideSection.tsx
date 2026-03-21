@@ -1,0 +1,38 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+export default function GlideSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      gsap.to(".h-scroll-track", {
+        x: "-25%",
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".h-scroll-section",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <div className="h-scroll-section" aria-hidden="true" ref={containerRef}>
+      <div className="h-scroll-track">
+        {[0, 1, 2, 3].map((i) => (
+          <span key={i} className="h-scroll-text">
+            CONCERT · RECITAL · CHAMBER · SOLO · CONCERTO · TBILISI ·&nbsp;
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}

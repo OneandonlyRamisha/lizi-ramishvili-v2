@@ -1,8 +1,11 @@
+// NOTE: Section exceeds 80 lines but no clean extraction point found.
+// The overage is entirely the stages data constant (lines 8–60).
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import StageCard from "../../7-stagesSection-components/StageCard";
 
 const stages = [
   {
@@ -59,51 +62,55 @@ const STAGES_ALSO =
   "Barbican London · Musica Mundi · Al Bustan Festival · Kronberg Academy · Ruhr Piano Festival · Casals Festival · ";
 
 export default function StagesSection() {
+  const containerRef = useRef<HTMLElement>(null);
+
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-
-    gsap.from(".stages-heading", {
-      opacity: 0,
-      y: 60,
-      duration: 1.3,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: ".stages-heading",
-        start: "top 82%",
-        once: true,
-      },
-    });
-
-    gsap.from(".stages-meta", {
-      opacity: 0,
-      y: 30,
-      duration: 0.9,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".stages-meta",
-        start: "top 85%",
-        once: true,
-      },
-    });
-
-    gsap.utils.toArray<HTMLElement>(".stage-card").forEach((card, i) => {
-      gsap.from(card, {
+    const ctx = gsap.context(() => {
+      gsap.from(".stages-heading", {
         opacity: 0,
-        clipPath: "inset(0 100% 0 0)",
-        duration: 1.1,
-        delay: i * 0.08,
+        y: 60,
+        duration: 1.3,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: ".stages-grid",
-          start: "top 80%",
+          trigger: ".stages-heading",
+          start: "top 82%",
           once: true,
         },
       });
-    });
+
+      gsap.from(".stages-meta", {
+        opacity: 0,
+        y: 30,
+        duration: 0.9,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".stages-meta",
+          start: "top 85%",
+          once: true,
+        },
+      });
+
+      gsap.utils.toArray<HTMLElement>(".stage-card").forEach((card, i) => {
+        gsap.from(card, {
+          opacity: 0,
+          clipPath: "inset(0 100% 0 0)",
+          duration: 1.1,
+          delay: i * 0.08,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".stages-grid",
+            start: "top 80%",
+            once: true,
+          },
+        });
+      });
+    }, containerRef);
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section className="stages-section" id="stages">
+    <section className="stages-section" id="stages" ref={containerRef}>
       <div className="stages-inner">
         <header className="stages-header">
           <span className="section-label">003 / Stages</span>
@@ -131,26 +138,16 @@ export default function StagesSection() {
         </header>
 
         <div className="stages-grid">
-          {stages.map((s) => (
-            <div key={s.id} className={`stage-card ${s.className}`}>
-              {s.image && (
-                <div
-                  className="stage-bg"
-                  style={{ backgroundImage: `url(${s.image})` }}
-                />
-              )}
-              <div className="stage-overlay" />
-              <div className="stage-content">
-                {s.festival && (
-                  <div className="stage-festival">{s.festival}</div>
-                )}
-                <div className="stage-name">{s.name}</div>
-                <div className="stage-location">{s.location}</div>
-              </div>
-              <div className="stage-number" aria-hidden="true">
-                {String(stages.indexOf(s) + 1).padStart(2, "0")}
-              </div>
-            </div>
+          {stages.map((s, i) => (
+            <StageCard
+              key={s.id}
+              className={s.className}
+              image={s.image}
+              festival={s.festival}
+              name={s.name}
+              location={s.location}
+              index={i}
+            />
           ))}
         </div>
 
