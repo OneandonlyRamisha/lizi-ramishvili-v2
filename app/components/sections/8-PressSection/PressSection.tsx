@@ -5,7 +5,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import PressCell from "../../9-pressSection-components/PressCell";
+import PressCell from "../../8-pressSection-components/PressCell";
 
 const pressCells = [
   {

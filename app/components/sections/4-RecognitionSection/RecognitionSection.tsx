@@ -5,9 +5,9 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import CompetitionRow from "../../5-recognitionSection-components/CompetitionRow";
-import AwardItem from "../../5-recognitionSection-components/AwardItem";
-import ScholarshipItem from "../../5-recognitionSection-components/ScholarshipItem";
+import CompetitionRow from "../../4-recognitionSection-components/CompetitionRow";
+import AwardItem from "../../4-recognitionSection-components/AwardItem";
+import ScholarshipItem from "../../4-recognitionSection-components/ScholarshipItem";
 
 const competitions = [
   {

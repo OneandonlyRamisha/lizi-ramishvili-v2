@@ -1,0 +1,68 @@
+"use client";
+
+import { RefObject } from "react";
+
+interface NavProps {
+  mobileNavOpen: boolean;
+  setMobileNavOpen: (value: boolean | ((prev: boolean) => boolean)) => void;
+  mainRef: RefObject<HTMLDivElement | null>;
+  firstNavLinkRef: RefObject<HTMLAnchorElement | null>;
+}
+
+export default function Nav({ mobileNavOpen, setMobileNavOpen, firstNavLinkRef }: NavProps) {
+  return (
+    <>
+      {/* ── NAV ── */}
+      <nav className="nav">
+        <a href="#hero" className="nav-logo">
+          LR
+        </a>
+        <ul className="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#recognition">Recognition</a></li>
+          <li><a href="#repertoire">Repertoire</a></li>
+          <li><a href="#gallery">Press</a></li>
+          <li><a href="#schedule">Schedule</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      {/* ── MOBILE NAV OVERLAY ── */}
+      <div
+        className={`mobile-nav${mobileNavOpen ? " open" : ""}`}
+        aria-hidden={!mobileNavOpen}
+      >
+        {[
+          ["#about", "About"],
+          ["#recognition", "Recognition"],
+          ["#repertoire", "Repertoire"],
+          ["#gallery", "Press"],
+          ["#schedule", "Schedule"],
+          ["#contact", "Contact"],
+        ].map(([href, label], idx) => (
+          <a
+            key={href}
+            href={href}
+            tabIndex={mobileNavOpen ? 0 : -1}
+            onClick={() => setMobileNavOpen(false)}
+            ref={idx === 0 ? firstNavLinkRef : undefined}
+          >
+            {label}
+          </a>
+        ))}
+      </div>
+
+      {/* ── HAMBURGER (fixed, always above overlay) ── */}
+      <button
+        className={`nav-hamburger${mobileNavOpen ? " open" : ""}`}
+        aria-label={mobileNavOpen ? "Close menu" : "Open menu"}
+        aria-expanded={mobileNavOpen}
+        onClick={() => setMobileNavOpen((v) => !v)}
+      >
+        <span />
+        <span />
+        <span />
+      </button>
+    </>
+  );
+}

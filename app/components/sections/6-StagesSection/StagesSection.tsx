@@ -5,7 +5,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import StageCard from "../../7-stagesSection-components/StageCard";
+import StageCard from "../../6-stagesSection-components/StageCard";
 
 const stages = [
   {

@@ -5,9 +5,9 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import BioSlideshow from "../../4-aboutSection-components/BioSlideshow";
-import BioChapter from "../../4-aboutSection-components/BioChapter";
-import BioAwardBox from "../../4-aboutSection-components/BioAwardBox";
+import BioSlideshow from "../../3-aboutSection-components/BioSlideshow";
+import BioChapter from "../../3-aboutSection-components/BioChapter";
+import BioAwardBox from "../../3-aboutSection-components/BioAwardBox";
 
 const bioChapters = [
   {

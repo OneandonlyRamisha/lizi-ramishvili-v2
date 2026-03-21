@@ -4,8 +4,8 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ContactForm from "../../11-contactSection-components/ContactForm";
-import ContactDetail from "../../11-contactSection-components/ContactDetail";
+import ContactForm from "../../10-contactSection-components/ContactForm";
+import ContactDetail from "../../10-contactSection-components/ContactDetail";
 
 export default function ContactSection() {
   const containerRef = useRef<HTMLElement>(null);

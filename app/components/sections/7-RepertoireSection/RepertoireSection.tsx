@@ -5,7 +5,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import RepertoireItem from "../../8-repertoireSection-components/RepertoireItem";
+import RepertoireItem from "../../7-repertoireSection-components/RepertoireItem";
 
 const repertoire = [
   {

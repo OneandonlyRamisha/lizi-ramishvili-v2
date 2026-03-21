@@ -5,7 +5,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ScheduleRow from "../../10-scheduleSection-components/ScheduleRow";
+import ScheduleRow from "../../9-scheduleSection-components/ScheduleRow";
 
 const schedule = [
   {
