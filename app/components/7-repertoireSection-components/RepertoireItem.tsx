@@ -1,5 +1,3 @@
-"use client";
-
 import styles from "./RepertoireItem.module.css";
 
 interface RepertoireItemProps {

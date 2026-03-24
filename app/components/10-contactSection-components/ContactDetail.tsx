@@ -1,5 +1,3 @@
-"use client";
-
 import styles from "./ContactDetail.module.css";
 
 interface ContactDetailProps {

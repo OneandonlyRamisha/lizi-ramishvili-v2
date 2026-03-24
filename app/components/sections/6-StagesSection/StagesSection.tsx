@@ -8,60 +8,17 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import StageCard from "../../6-stagesSection-components/StageCard";
 import styles from "./StagesSection.module.css";
 import cardStyles from "../../6-stagesSection-components/StageCard.module.css";
+import { stages, STAGES_ALSO } from "../../../data";
 
-const stages = [
-  {
-    id: "carnegie",
-    name: "Carnegie Hall",
-    location: "New York, USA",
-    festival: null,
-    image: "/images/stages/carnegie-hall.jpg",
-    className: cardStyles.scA,
-  },
-  {
-    id: "kloster",
-    name: "Kloster Eberbach",
-    location: "Rheingau, Germany",
-    festival: "Rheingau Musik Festival",
-    image: "/images/stages/kloster-eberbach.jpg",
-    className: cardStyles.scB,
-  },
-  {
-    id: "tbilisi",
-    name: "Tbilisi Conservatoire",
-    location: "Tbilisi, Georgia",
-    festival: "International Rostropovich Festival",
-    image: "/images/stages/tbilisi-conservatoire.jpg",
-    className: cardStyles.scC,
-  },
-  {
-    id: "berlin",
-    name: "Konzerthaus Berlin",
-    location: "Berlin, Germany",
-    festival: "Young Euro Classic",
-    image: null,
-    className: `${cardStyles.scD} ${cardStyles.sgBerlin}`,
-  },
-  {
-    id: "schubertiade",
-    name: "Schubertiade",
-    location: "Schwarzenberg, Austria",
-    festival: "Schubertiade Festival",
-    image: null,
-    className: `${cardStyles.scE} ${cardStyles.sgSchubertiade}`,
-  },
-  {
-    id: "gstaad",
-    name: "Sommets Musicaux",
-    location: "Gstaad, Switzerland",
-    festival: "Sommets Musicaux de Gstaad",
-    image: null,
-    className: `${cardStyles.scF} ${cardStyles.sgGstaad}`,
-  },
+// CSS module class names are resolved here since they're only available via this module import
+const stageClassNames = [
+  cardStyles.scA,
+  cardStyles.scB,
+  cardStyles.scC,
+  `${cardStyles.scD} ${cardStyles.sgBerlin}`,
+  `${cardStyles.scE} ${cardStyles.sgSchubertiade}`,
+  `${cardStyles.scF} ${cardStyles.sgGstaad}`,
 ];
-
-const STAGES_ALSO =
-  "Barbican London · Musica Mundi · Al Bustan Festival · Kronberg Academy · Ruhr Piano Festival · Casals Festival · ";
 
 export default function StagesSection() {
   const containerRef = useRef<HTMLElement>(null);
@@ -115,7 +72,7 @@ export default function StagesSection() {
           {stages.map((s, i) => (
             <StageCard
               key={s.id}
-              className={s.className}
+              className={stageClassNames[i]}
               image={s.image}
               festival={s.festival}
               name={s.name}

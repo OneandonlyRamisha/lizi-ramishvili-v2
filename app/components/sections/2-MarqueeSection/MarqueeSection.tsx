@@ -1,9 +1,5 @@
-"use client";
-
 import styles from "./MarqueeSection.module.css";
-
-const MARQUEE_TEXT =
-  "CONCERT ARTIST · TBILISI · LONDON · VIENNA · BERLIN · PARIS · NEW YORK · TOKYO · AMSTERDAM · ";
+import { MARQUEE_TEXT } from "../../../data";
 
 export default function MarqueeSection() {
   return (

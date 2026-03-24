@@ -11,29 +11,7 @@ import BioAwardBox from "../../3-aboutSection-components/BioAwardBox";
 import styles from "./AboutSection.module.css";
 import bioChapterStyles from "../../3-aboutSection-components/BioChapter.module.css";
 import bioAwardStyles from "../../3-aboutSection-components/BioAwardBox.module.css";
-
-const bioChapters = [
-  {
-    label: "Early Life",
-    text: "Born in Tbilisi, Georgia, in 1997, Lizi Ramishvili began her journey with the cello at the tender age of seven. Under the guidance of Professor Tamara Gabarashvili at the Paliashvili Central Music School, she quickly showcased her prodigious talent, delivering her first public performance just over a year into her studies.",
-  },
-  {
-    label: "Education",
-    text: "Lizi's dedication led her to the Pre-College division of the Kronberg Academy in Germany, studying under the esteemed cellist Frans Helmerson, and later to the Haute École de Musique de Genève in Switzerland. In 2017, she was accepted into the Reina Sofía School of Music in Madrid under Professor Jens Peter Maintz, supported by a scholarship from the Fundación Albéniz and a Fernando Solar González instrument scholarship.",
-  },
-  {
-    label: "Competitions & Awards",
-    text: "Lizi's talent has been recognised in numerous international competitions. She secured the First Prize and Golden Nutcracker at the Nutcracker International TV Competition in Russia, and the Grand Prize at the Renaissance International Competition in Armenia. In 2012 she represented Georgia at the Classical Eurovision Competition. In 2017 she received the Zhvania Tsinandali Award for Young Scholars and Artists, and has held full scholarships from the foundations of Mstislav Rostropovich, Nikolai Miaskovsky, Boris Pergamenschikov, and Boris Ustinov.",
-  },
-  {
-    label: "Performances & Festivals",
-    text: "Her performance career spans the world's most prestigious venues — Carnegie Hall in New York, the Berlin Konzerthaus, and countless international festivals including the Rheingau Music Festival, Ruhr Piano Festival, Musica Mundi, Young Euro Classic, Kronberg Academy Festival, Schubertiade Festival, Al Bustan, and the International Mstislav Rostropovich Festival, among many others.",
-  },
-  {
-    label: "Collaborations",
-    text: "Lizi has collaborated with Ivry Gitlis, Yuri Bashmet, Renaud Capuçon, Khatia Buniatishvili, Gvantsa Buniatishvili, Kazuki Yamada, Gianandrea Noseda, and Pietari Inkinen. She has performed with the Deutsche Radio Philharmonie Saarbrücken Kaiserslautern, Real Filharmonía de Galicia, Tbilisi Symphony Orchestra, Georgian Philharmonic Orchestra, National Chamber Orchestra of Armenia, National Symphony Orchestra of Azerbaijan, Novaya Rossiya State Symphony Orchestra, and the Tchaikovsky Symphony Orchestra, among others.",
-  },
-];
+import { bioChapters } from "../../../data";
 
 export default function AboutSection() {
   const containerRef = useRef<HTMLElement>(null);

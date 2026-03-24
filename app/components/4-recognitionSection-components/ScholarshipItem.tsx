@@ -1,5 +1,3 @@
-"use client";
-
 import styles from "./ScholarshipItem.module.css";
 
 interface ScholarshipItemProps {

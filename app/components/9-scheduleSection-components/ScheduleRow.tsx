@@ -1,5 +1,3 @@
-"use client";
-
 import styles from "./ScheduleRow.module.css";
 
 interface ScheduleRowProps {

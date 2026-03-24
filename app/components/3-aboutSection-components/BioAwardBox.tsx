@@ -1,5 +1,3 @@
-"use client";
-
 import styles from "./BioAwardBox.module.css";
 
 export default function BioAwardBox() {

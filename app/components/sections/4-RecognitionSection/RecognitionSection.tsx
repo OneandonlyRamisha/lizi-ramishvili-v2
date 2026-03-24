@@ -12,61 +12,7 @@ import styles from "./RecognitionSection.module.css";
 import compStyles from "../../4-recognitionSection-components/CompetitionRow.module.css";
 import awardStyles from "../../4-recognitionSection-components/AwardItem.module.css";
 import scholarshipStyles from "../../4-recognitionSection-components/ScholarshipItem.module.css";
-
-const competitions = [
-  {
-    numeral: "I",
-    prize: "First Prize · Golden Nutcracker",
-    name: "Nutcracker International TV Competition",
-    year: "2010",
-    location: "Russia",
-  },
-  {
-    numeral: "I",
-    prize: "Grand Prix",
-    name: "Renaissance International Competition",
-    year: null,
-    location: "Armenia",
-  },
-  {
-    numeral: "✦",
-    prize: "National Winner — International Final",
-    name: "Classical Eurovision Competition",
-    year: "2012",
-    location: "Georgia",
-  },
-  {
-    numeral: "✦",
-    prize: "Special Finalist Prize · €1,000",
-    name: "Classic Strings Cello Competition",
-    year: null,
-    location: "International",
-  },
-];
-
-const honours = [
-  {
-    year: "2017",
-    name: "Zhvania Tsinandali Award",
-    detail: "For Young Scholars and Artists · Georgia",
-  },
-  {
-    year: "2021",
-    name: "Forbes Georgia — 30 Under 30",
-    detail: "Culture & Style Category",
-  },
-];
-
-const scholarships = [
-  {
-    name: "Fundación Albéniz",
-    note: "Full scholarship + Fernando Solar González cello · Reina Sofía School, Madrid",
-  },
-  { name: "Mstislav Rostropovich Foundation", note: "Full scholarship" },
-  { name: "Nikolai Miaskovsky Foundation", note: "Full scholarship" },
-  { name: "Boris Pergamenschikov Foundation", note: "Full scholarship" },
-  { name: "Boris Ustinov Foundation", note: "Full scholarship" },
-];
+import { competitions, honours, scholarships } from "../../../data";
 
 export default function RecognitionSection() {
   const containerRef = useRef<HTMLElement>(null);

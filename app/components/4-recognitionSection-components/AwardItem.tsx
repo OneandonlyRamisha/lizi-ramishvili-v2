@@ -1,5 +1,3 @@
-"use client";
-
 import styles from "./AwardItem.module.css";
 
 interface AwardItemProps {

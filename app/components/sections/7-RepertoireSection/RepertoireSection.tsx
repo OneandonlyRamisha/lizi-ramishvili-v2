@@ -6,44 +6,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./RepertoireSection.module.css";
-
-const repertoire = [
-  {
-    piece: "Cello Concerto in B minor",
-    composer: "Antonín Dvořák",
-    opus: "Op. 104",
-  },
-  {
-    piece: "Cello Concerto in E minor",
-    composer: "Edward Elgar",
-    opus: "Op. 85",
-  },
-  {
-    piece: "Cello Concerto No. 1",
-    composer: "Dmitri Shostakovich",
-    opus: "Op. 107",
-  },
-  {
-    piece: "Six Suites for Solo Cello",
-    composer: "Johann Sebastian Bach",
-    opus: "BWV 1007–1012",
-  },
-  {
-    piece: "Cello Sonata in A major",
-    composer: "Ludwig van Beethoven",
-    opus: "Op. 69",
-  },
-  {
-    piece: "Cello Concerto in A minor",
-    composer: "Camille Saint-Saëns",
-    opus: "Op. 33",
-  },
-  {
-    piece: "Don Quixote",
-    composer: "Richard Strauss",
-    opus: "Op. 35",
-  },
-];
+import { repertoire } from "../../../data";
 
 export default function RepertoireSection() {
   const containerRef = useRef<HTMLElement>(null);

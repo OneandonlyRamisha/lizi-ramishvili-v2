@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ContactForm from "../../10-contactSection-components/ContactForm";
 import ContactDetail from "../../10-contactSection-components/ContactDetail";
 import styles from "./ContactSection.module.css";
+import { contactDetails } from "../../../data";
 
 export default function ContactSection() {
   const containerRef = useRef<HTMLElement>(null);
@@ -53,9 +54,9 @@ export default function ContactSection() {
         <div className={styles.contactGrid}>
           <div className={styles.contactInfo}>
             <h3>Get in Touch</h3>
-            <ContactDetail label="Management" value="management@liziramishvili.com" />
-            <ContactDetail label="Bookings" value="bookings@liziramishvili.com" />
-            <ContactDetail label="Press & Media" value="press@liziramishvili.com" />
+            {contactDetails.map((d) => (
+              <ContactDetail key={d.label} label={d.label} value={d.value} />
+            ))}
           </div>
           <ContactForm />
         </div>
