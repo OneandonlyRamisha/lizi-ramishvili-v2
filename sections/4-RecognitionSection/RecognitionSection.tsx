@@ -5,14 +5,14 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import CompetitionRow from "../../4-recognitionSection-components/CompetitionRow";
-import AwardItem from "../../4-recognitionSection-components/AwardItem";
-import ScholarshipItem from "../../4-recognitionSection-components/ScholarshipItem";
+import CompetitionRow from "../../components/4-recognitionSection-components/CompetitionRow";
+import AwardItem from "../../components/4-recognitionSection-components/AwardItem";
+import ScholarshipItem from "../../components/4-recognitionSection-components/ScholarshipItem";
 import styles from "./RecognitionSection.module.css";
-import compStyles from "../../4-recognitionSection-components/CompetitionRow.module.css";
-import awardStyles from "../../4-recognitionSection-components/AwardItem.module.css";
-import scholarshipStyles from "../../4-recognitionSection-components/ScholarshipItem.module.css";
-import { competitions, honours, scholarships } from "../../../data";
+import compStyles from "../../components/4-recognitionSection-components/CompetitionRow.module.css";
+import awardStyles from "../../components/4-recognitionSection-components/AwardItem.module.css";
+import scholarshipStyles from "../../components/4-recognitionSection-components/ScholarshipItem.module.css";
+import { competitions, honours, scholarships } from "../../app/data";
 
 export default function RecognitionSection() {
   const containerRef = useRef<HTMLElement>(null);

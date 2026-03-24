@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./RepertoireSection.module.css";
-import { repertoire } from "../../../data";
+import { repertoire } from "../../app/data";
 
 export default function RepertoireSection() {
   const containerRef = useRef<HTMLElement>(null);

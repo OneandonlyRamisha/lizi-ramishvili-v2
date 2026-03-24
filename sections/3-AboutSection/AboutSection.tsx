@@ -5,13 +5,13 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import BioSlideshow from "../../3-aboutSection-components/BioSlideshow";
-import BioChapter from "../../3-aboutSection-components/BioChapter";
-import BioAwardBox from "../../3-aboutSection-components/BioAwardBox";
+import BioSlideshow from "../../components/3-aboutSection-components/BioSlideshow";
+import BioChapter from "../../components/3-aboutSection-components/BioChapter";
+import BioAwardBox from "../../components/3-aboutSection-components/BioAwardBox";
 import styles from "./AboutSection.module.css";
-import bioChapterStyles from "../../3-aboutSection-components/BioChapter.module.css";
-import bioAwardStyles from "../../3-aboutSection-components/BioAwardBox.module.css";
-import { bioChapters } from "../../../data";
+import bioChapterStyles from "../../components/3-aboutSection-components/BioChapter.module.css";
+import bioAwardStyles from "../../components/3-aboutSection-components/BioAwardBox.module.css";
+import { bioChapters } from "../../app/data";
 
 export default function AboutSection() {
   const containerRef = useRef<HTMLElement>(null);

@@ -5,10 +5,10 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ScheduleRow from "../../9-scheduleSection-components/ScheduleRow";
+import ScheduleRow from "../../components/9-scheduleSection-components/ScheduleRow";
 import styles from "./ScheduleSection.module.css";
-import rowStyles from "../../9-scheduleSection-components/ScheduleRow.module.css";
-import { schedule } from "../../../data";
+import rowStyles from "../../components/9-scheduleSection-components/ScheduleRow.module.css";
+import { schedule } from "../../app/data";
 
 export default function ScheduleSection() {
   const containerRef = useRef<HTMLElement>(null);

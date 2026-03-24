@@ -5,9 +5,9 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import PressCell from "../../8-pressSection-components/PressCell";
+import PressCell from "../../components/8-pressSection-components/PressCell";
 import styles from "./PressSection.module.css";
-import { pressCells } from "../../../data";
+import { pressCells } from "../../app/data";
 
 // Resolve CSS module class names from the gridKey/textClassKey strings in data
 type StylesWithIndex = Record<string, string>;

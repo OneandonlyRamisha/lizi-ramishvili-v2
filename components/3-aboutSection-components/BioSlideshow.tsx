@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "./BioSlideshow.module.css";
-import { BIO_IMAGES } from "../../data";
+import { BIO_IMAGES } from "../../app/data";
 
 export default function BioSlideshow() {
   const slideTimerRef = useRef<ReturnType<typeof setInterval> | undefined>(undefined);

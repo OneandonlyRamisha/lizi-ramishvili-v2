@@ -5,10 +5,10 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import StageCard from "../../6-stagesSection-components/StageCard";
+import StageCard from "../../components/6-stagesSection-components/StageCard";
 import styles from "./StagesSection.module.css";
-import cardStyles from "../../6-stagesSection-components/StageCard.module.css";
-import { stages, STAGES_ALSO } from "../../../data";
+import cardStyles from "../../components/6-stagesSection-components/StageCard.module.css";
+import { stages, STAGES_ALSO } from "../../app/data";
 
 // CSS module class names are resolved here since they're only available via this module import
 const stageClassNames = [

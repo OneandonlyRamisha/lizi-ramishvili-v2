@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import BackButton from "./BackButton";
 import styles from "./repertoire-page.module.css";
-import repStyles from "../components/sections/7-RepertoireSection/RepertoireSection.module.css";
+import repStyles from "../../sections/7-RepertoireSection/RepertoireSection.module.css";
 import { fullRepertoire } from "../data";
 
 export const metadata: Metadata = {

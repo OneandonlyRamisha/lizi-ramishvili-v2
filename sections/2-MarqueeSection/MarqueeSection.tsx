@@ -1,5 +1,5 @@
 import styles from "./MarqueeSection.module.css";
-import { MARQUEE_TEXT } from "../../../data";
+import { MARQUEE_TEXT } from "../../app/data";
 
 export default function MarqueeSection() {
   return (
