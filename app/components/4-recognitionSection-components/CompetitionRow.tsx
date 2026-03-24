@@ -1,5 +1,7 @@
 "use client";
 
+import _styles from "./CompetitionRow.module.css";
+
 interface CompetitionRowProps {
   numeral: string;
   prize: string;

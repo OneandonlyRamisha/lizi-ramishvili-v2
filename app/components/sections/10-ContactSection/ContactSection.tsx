@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ContactForm from "../../10-contactSection-components/ContactForm";
 import ContactDetail from "../../10-contactSection-components/ContactDetail";
+import _styles from "./ContactSection.module.css";
 
 export default function ContactSection() {
   const containerRef = useRef<HTMLElement>(null);

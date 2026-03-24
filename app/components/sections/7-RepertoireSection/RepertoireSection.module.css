@@ -1,3 +1,76 @@
-/* RepertoireSection styles are defined in globals.css under ── REPERTOIRE ── */
-/* This file is a required companion placeholder per architecture rules. */
-.root {}
+:global {
+  /* ── REPERTOIRE ── */
+  .repertoire-section {
+    background: var(--bg-cream);
+    color: var(--text-primary);
+    padding: var(--section-pad) var(--gutter);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .rep-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+
+  .rep-heading {
+    font-family: var(--font-serif);
+    font-size: clamp(3.5rem, 6.5vw, 9rem);
+    font-weight: 700;
+    line-height: 0.88;
+    color: var(--text-primary);
+    margin-bottom: 5rem;
+    overflow: hidden;
+  }
+
+  .rep-list {
+    list-style: none;
+    border-top: 1px solid rgba(20, 18, 16, 0.1);
+  }
+
+  .rep-footer {
+    display: flex;
+    justify-content: center;
+    padding: 4rem 0 0;
+  }
+
+  .rep-see-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    text-decoration: none;
+    border: 1px solid rgba(20, 18, 16, 0.25);
+    padding: 1.1rem 2.8rem;
+    transition:
+      background 0.35s ease,
+      border-color 0.35s ease,
+      color 0.35s ease;
+  }
+
+  .rep-see-more:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--text-inverse);
+  }
+
+  .rep-bg-text {
+    position: absolute;
+    top: 50%;
+    right: -5%;
+    transform: translateY(-50%);
+    font-family: var(--font-serif);
+    font-size: clamp(8rem, 18vw, 28rem);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(20, 18, 16, 0.05);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+}

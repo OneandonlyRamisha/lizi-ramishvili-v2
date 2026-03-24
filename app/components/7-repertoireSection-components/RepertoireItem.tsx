@@ -1,5 +1,7 @@
 "use client";
 
+import _styles from "./RepertoireItem.module.css";
+
 interface RepertoireItemProps {
   piece: string;
   composer: string;

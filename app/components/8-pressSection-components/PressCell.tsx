@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import _styles from "./PressCell.module.css";
 
 interface PressCellProps {
   href: string;

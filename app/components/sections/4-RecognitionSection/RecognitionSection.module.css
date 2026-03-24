@@ -1,3 +1,106 @@
-/* RecognitionSection styles are defined in globals.css under ── RECOGNITION ── */
-/* This file is a required companion placeholder per architecture rules. */
-.root {}
+:global {
+  /* ── RECOGNITION ── */
+  .recognition-section {
+    background: var(--bg-dark);
+    color: var(--text-inverse);
+    padding: var(--section-pad) var(--gutter) calc(var(--section-pad) * 1.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Ghosted "I" watermark */
+  .rec-watermark {
+    position: absolute;
+    top: -6rem;
+    right: -4%;
+    font-family: var(--font-serif);
+    font-size: clamp(16rem, 38vw, 58rem);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(247, 243, 238, 0.025);
+    line-height: 0.8;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .rec-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .rec-heading {
+    font-family: var(--font-serif);
+    font-size: clamp(3.5rem, 6.5vw, 9rem);
+    font-weight: 700;
+    line-height: 0.88;
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .rec-heading-note {
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+  }
+
+  /* Competition rows */
+  .rec-sub-label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.96rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(247, 243, 238, 0.07);
+  }
+
+  .rec-competitions {
+    margin-bottom: 5rem;
+  }
+
+  /* Awards + Scholarships two-col */
+  .rec-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 5vw, 7rem);
+    align-items: start;
+  }
+
+  /* Scholarships */
+  .scholarship-intro {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.96rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-bottom: 1rem;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(247, 243, 238, 0.07);
+  }
+
+  .scholarship-list {
+    list-style: none;
+  }
+
+  @media (max-width: 900px) {
+    .rec-bottom {
+      grid-template-columns: 1fr;
+    }
+  }
+}

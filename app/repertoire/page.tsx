@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import BackButton from "./BackButton";
+import "./repertoire-page.css";
 
 export const metadata: Metadata = {
   title: "Full Repertoire — Lizi Ramishvili",

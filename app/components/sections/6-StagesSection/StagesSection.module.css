@@ -1,3 +1,135 @@
-/* StagesSection styles are defined in globals.css under ── STAGES ── */
-/* This file is a required companion placeholder per architecture rules. */
-.root {}
+:global {
+  /* ── STAGES ── */
+  .stages-section {
+    background: var(--bg-deep);
+    color: var(--text-inverse);
+    min-height: 100vh;
+    padding: var(--section-pad) var(--gutter);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stages-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+
+  .stages-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2.5rem;
+    gap: 2rem;
+  }
+
+  .stages-heading {
+    font-family: var(--font-serif);
+    font-size: clamp(3.5rem, 6.5vw, 9rem);
+    font-weight: 700;
+    line-height: 0.88;
+  }
+
+  /* Grid */
+  .stages-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows:
+      clamp(200px, 27vw, 370px)
+      clamp(200px, 27vw, 370px)
+      clamp(180px, 22vw, 300px);
+    gap: 0.5rem;
+  }
+
+  /* "Also performed at" strip */
+  .stages-also {
+    border-top: 1px solid rgba(247, 243, 238, 0.05);
+    padding: 1.4rem 0;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .stages-also-label {
+    font-family: var(--font-sans);
+    font-size: 0.96rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .stages-also-marquee {
+    overflow: hidden;
+    flex: 1;
+  }
+
+  .stages-also-track {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee-scroll 40s linear infinite;
+    font-family: var(--font-sans);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 1000px) {
+    .stages-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: unset;
+    }
+    .sc-a {
+      grid-column: 1 / 3;
+      grid-row: auto;
+      min-height: clamp(260px, 40vw, 440px);
+    }
+    .sc-b {
+      grid-column: 1 / 2;
+      grid-row: auto;
+      min-height: clamp(200px, 28vw, 320px);
+    }
+    .sc-c {
+      grid-column: 2 / 3;
+      grid-row: auto;
+      min-height: clamp(200px, 28vw, 320px);
+    }
+    .sc-d {
+      grid-column: 1 / 2;
+      grid-row: auto;
+      min-height: clamp(180px, 26vw, 300px);
+    }
+    .sc-e {
+      grid-column: 2 / 3;
+      grid-row: auto;
+      min-height: clamp(180px, 26vw, 300px);
+    }
+    .sc-f {
+      grid-column: 1 / 3;
+      grid-row: auto;
+      min-height: clamp(180px, 26vw, 280px);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .stages-grid {
+      grid-template-columns: 1fr;
+    }
+    .sc-a,
+    .sc-b,
+    .sc-c,
+    .sc-d,
+    .sc-e,
+    .sc-f {
+      grid-column: 1 / 2;
+      grid-row: auto;
+      min-height: clamp(200px, 55vw, 340px);
+    }
+    .stages-meta {
+      gap: 1.5rem;
+    }
+  }
+}

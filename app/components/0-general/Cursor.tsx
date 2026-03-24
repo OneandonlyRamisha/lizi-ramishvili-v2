@@ -1,5 +1,7 @@
 "use client";
 
+import _styles from "./Cursor.module.css";
+
 export default function Cursor() {
   return (
     <>

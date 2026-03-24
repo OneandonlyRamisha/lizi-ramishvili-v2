@@ -1,1 +1,164 @@
-/* Nav.module.css — placeholder. Nav styles live in globals.css under the NAV section. */
+:global {
+  /* ── NAV ── */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.25rem var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: 1px solid transparent;
+    transition:
+      background 0.4s ease,
+      backdrop-filter 0.4s ease,
+      border-color 0.4s ease;
+  }
+
+  .nav.scrolled {
+    background: rgba(20, 18, 16, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(247, 243, 238, 0.07);
+  }
+
+  .nav-logo {
+    flex: 0 0 auto;
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-inverse);
+    letter-spacing: 0.1em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--text-inverse);
+    text-decoration: none;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 3px;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+  }
+
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    opacity: 1;
+  }
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  /* ── MOBILE NAV ── */
+  .nav-hamburger {
+    display: none;
+    position: fixed;
+    top: 1.75rem;
+    right: var(--gutter);
+    z-index: 400;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--text-inverse);
+    transition:
+      transform 0.35s ease,
+      opacity 0.35s ease;
+    transform-origin: center;
+  }
+
+  .nav-hamburger.open span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+
+  .nav-hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .nav-hamburger.open span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  .mobile-nav {
+    position: fixed;
+    inset: 0;
+    background: var(--bg-dark);
+    z-index: 300;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+
+  .mobile-nav.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-nav a {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 8vw, 4.5rem);
+    font-weight: 700;
+    color: var(--text-inverse);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: color 0.3s;
+  }
+
+  .mobile-nav a:hover {
+    color: var(--accent);
+  }
+
+  @media (max-width: 1024px) {
+    .nav-hamburger {
+      display: flex;
+    }
+    .nav-links {
+      display: none;
+    }
+  }
+}

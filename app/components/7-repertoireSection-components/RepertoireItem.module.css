@@ -1,3 +1,97 @@
-/* RepertoireItem — styles live in globals.css under the Repertoire section.
-   This file is the required module companion. */
-.root {}
+:global {
+  /* ── REPERTOIRE ROW / ITEM ── */
+  .rep-row {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr auto;
+    align-items: center;
+    column-gap: 2rem;
+    padding: 2rem 0;
+    padding-left: 0;
+    border-bottom: 1px solid rgba(20, 18, 16, 0.1);
+    position: relative;
+    transition: padding-left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: default;
+  }
+
+  .rep-row::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 0;
+    background: var(--accent);
+    transition: height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .rep-row:hover {
+    padding-left: 1.4rem;
+  }
+
+  .rep-row:hover::before {
+    height: 55%;
+  }
+
+  .rep-rule {
+    display: none;
+  }
+
+  .rep-num {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(181, 42, 58, 0.2);
+    line-height: 1;
+    text-align: left;
+    user-select: none;
+    transition: -webkit-text-stroke-color 0.4s ease;
+  }
+
+  .rep-row:hover .rep-num {
+    -webkit-text-stroke-color: rgba(181, 42, 58, 0.65);
+  }
+
+  .rep-center {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .rep-piece-name {
+    font-family: var(--font-serif);
+    font-size: clamp(1.1rem, 2.2vw, 2rem);
+    font-style: italic;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: color 0.35s ease;
+  }
+
+  .rep-row:hover .rep-piece-name {
+    color: var(--accent);
+  }
+
+  .rep-opus {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .rep-composer {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: right;
+    transition: color 0.35s ease;
+  }
+
+  .rep-row:hover .rep-composer {
+    color: var(--text-secondary);
+  }
+}

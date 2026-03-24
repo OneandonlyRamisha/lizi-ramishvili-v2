@@ -1,5 +1,7 @@
 "use client";
 
+import _styles from "./AwardItem.module.css";
+
 interface AwardItemProps {
   year: string;
   name: string;

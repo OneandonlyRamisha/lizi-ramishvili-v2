@@ -1,3 +1,163 @@
-/* ContactSection styles are defined in globals.css under ── CONTACT ── */
-/* This file is a required companion placeholder per architecture rules. */
-.root {}
+:global {
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--bg-cream);
+    color: var(--text-primary);
+    padding: var(--section-pad) var(--gutter) 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-bg-text {
+    position: absolute;
+    top: 0;
+    left: -2%;
+    font-family: var(--font-serif);
+    font-size: clamp(8rem, 18vw, 26rem);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(20, 18, 16, 0.05);
+    line-height: 0.85;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .contact-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-heading {
+    font-family: var(--font-serif);
+    font-size: clamp(4rem, 9vw, 13rem);
+    font-weight: 900;
+    line-height: 0.85;
+    color: var(--text-primary);
+    margin-bottom: 6rem;
+    overflow: hidden;
+  }
+
+  .contact-accent {
+    color: var(--accent);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 8rem);
+    align-items: start;
+    margin-bottom: 7rem;
+  }
+
+  .contact-info h3 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-form-confirmation {
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 1.6vw, 1.3rem);
+    color: var(--text-primary);
+    line-height: 1.5;
+    padding: 2rem 0;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 1px solid rgba(20, 18, 16, 0.1);
+    padding: 3rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  .footer-logo {
+    font-family: var(--font-serif);
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .footer-socials {
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  .footer-social-link {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-social-link:hover {
+    color: var(--text-primary);
+  }
+
+  .footer-copy {
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+  }
+
+  .footer-made {
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+  }
+
+  .footer-heart {
+    color: var(--accent);
+  }
+
+  .footer-credit {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+  .footer-credit:hover {
+    color: var(--accent);
+  }
+
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .footer {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+}

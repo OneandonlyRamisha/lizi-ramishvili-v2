@@ -1,3 +1,25 @@
-/* ScholarshipItem — styles live in globals.css under the Recognition section.
-   This file is the required module companion. */
-.root {}
+:global {
+  /* ── SCHOLARSHIP ITEM ── */
+  .scholarship-item {
+    display: flex;
+    flex-direction: column;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid rgba(247, 243, 238, 0.07);
+    gap: 0.25rem;
+  }
+
+  .scholarship-name {
+    font-family: var(--font-serif);
+    font-size: clamp(0.88rem, 1.3vw, 1.05rem);
+    font-weight: 600;
+    color: var(--text-inverse);
+    line-height: 1.2;
+  }
+
+  .scholarship-note {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+}

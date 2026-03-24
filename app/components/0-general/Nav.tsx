@@ -1,6 +1,7 @@
 "use client";
 
 import { RefObject, useEffect, useRef } from "react";
+import _styles from "./Nav.module.css";
 
 interface NavProps {
   mobileNavOpen: boolean;

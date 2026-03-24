@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import _styles from "./BioSlideshow.module.css";
 
 const BIO_IMAGES = [
   "/images/biography/bio1.jpg",

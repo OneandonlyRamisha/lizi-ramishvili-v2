@@ -1,3 +1,40 @@
-/* MarqueeSection styles are defined in globals.css under ── MARQUEE ── */
-/* This file is a required companion placeholder per architecture rules. */
-.root {}
+:global {
+  /* ── MARQUEE ── */
+  .marquee-strip {
+    background: var(--accent);
+    padding: 1.1rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-track {
+    display: inline-flex;
+    white-space: nowrap;
+    animation: marquee-scroll 32s linear infinite;
+    will-change: transform;
+  }
+
+  .marquee-strip:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .marquee-text {
+    font-family: var(--font-sans);
+    font-size: clamp(0.65rem, 1.3vw, 0.9rem);
+    font-weight: 700;
+    color: rgba(247, 243, 238, 0.95);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding-right: 0;
+    flex-shrink: 0;
+  }
+
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}

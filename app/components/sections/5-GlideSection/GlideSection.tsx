@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import _styles from "./GlideSection.module.css";
 
 export default function GlideSection() {
   const containerRef = useRef<HTMLDivElement>(null);

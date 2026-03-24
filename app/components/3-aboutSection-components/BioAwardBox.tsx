@@ -1,5 +1,7 @@
 "use client";
 
+import _styles from "./BioAwardBox.module.css";
+
 export default function BioAwardBox() {
   return (
     <div className="bio-award-box" aria-label="Forbes recognition">

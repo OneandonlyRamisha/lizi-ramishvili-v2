@@ -1,5 +1,7 @@
 "use client";
 
+import _styles from "./ContactDetail.module.css";
+
 interface ContactDetailProps {
   label: string;
   value: string;

@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CompetitionRow from "../../4-recognitionSection-components/CompetitionRow";
 import AwardItem from "../../4-recognitionSection-components/AwardItem";
 import ScholarshipItem from "../../4-recognitionSection-components/ScholarshipItem";
+import _styles from "./RecognitionSection.module.css";
 
 const competitions = [
   {

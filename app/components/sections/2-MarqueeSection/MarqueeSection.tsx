@@ -1,5 +1,7 @@
 "use client";
 
+import _styles from "./MarqueeSection.module.css";
+
 const MARQUEE_TEXT =
   "CONCERT ARTIST · TBILISI · LONDON · VIENNA · BERLIN · PARIS · NEW YORK · TOKYO · AMSTERDAM · ";
 

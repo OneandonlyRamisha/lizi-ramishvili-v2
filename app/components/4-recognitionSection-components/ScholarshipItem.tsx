@@ -1,5 +1,7 @@
 "use client";
 
+import _styles from "./ScholarshipItem.module.css";
+
 interface ScholarshipItemProps {
   name: string;
   note: string;

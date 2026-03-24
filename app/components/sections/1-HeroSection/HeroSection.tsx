@@ -1,5 +1,7 @@
 "use client";
 
+import _styles from "./HeroSection.module.css";
+
 export default function HeroSection() {
   return (
     <section className="hero" id="hero">

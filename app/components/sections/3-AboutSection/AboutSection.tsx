@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import BioSlideshow from "../../3-aboutSection-components/BioSlideshow";
 import BioChapter from "../../3-aboutSection-components/BioChapter";
 import BioAwardBox from "../../3-aboutSection-components/BioAwardBox";
+import _styles from "./AboutSection.module.css";
 
 const bioChapters = [
   {

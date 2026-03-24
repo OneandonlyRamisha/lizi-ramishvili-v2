@@ -1,5 +1,7 @@
 "use client";
 
+import _styles from "./ScheduleRow.module.css";
+
 interface ScheduleRowProps {
   day: string;
   month: string;

@@ -1,5 +1,7 @@
 "use client";
 
+import _styles from "./BioChapter.module.css";
+
 interface BioChapterProps {
   index: number;
   label: string;

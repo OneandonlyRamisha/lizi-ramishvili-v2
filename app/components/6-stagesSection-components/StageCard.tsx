@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import _styles from "./StageCard.module.css";
 
 interface StageCardProps {
   className: string;
