@@ -38,13 +38,13 @@ export default function AboutSection() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
-      gsap.from(".about-section .section-label", {
+      gsap.from(".section-label", {
         opacity: 0,
         y: 16,
         duration: 0.6,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: ".about-section",
+          trigger: containerRef.current,
           start: "top 80%",
           once: true,
         },
@@ -55,7 +55,7 @@ export default function AboutSection() {
         duration: 1.3,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: ".about-section",
+          trigger: containerRef.current,
           start: "top 72%",
           once: true,
         },

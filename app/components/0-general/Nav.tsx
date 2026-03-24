@@ -17,7 +17,7 @@ export default function Nav({ mobileNavOpen, setMobileNavOpen, firstNavLinkRef }
     if (!nav) return;
 
     const onScroll = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY >= window.innerHeight) {
         nav.classList.add("scrolled");
       } else {
         nav.classList.remove("scrolled");

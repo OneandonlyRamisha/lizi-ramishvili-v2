@@ -14,7 +14,7 @@ export default function GlideSection() {
         x: "-50%",
         ease: "none",
         scrollTrigger: {
-          trigger: ".h-scroll-section",
+          trigger: containerRef.current,
           start: "top bottom",
           end: "bottom top",
           scrub: 2,

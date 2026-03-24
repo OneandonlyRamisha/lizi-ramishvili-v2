@@ -117,9 +117,6 @@ export default function ScheduleSection() {
               Performances
             </h2>
           </div>
-          <span className="schedule-top-note">
-            Season 2026 · {schedule.length} Concerts
-          </span>
         </div>
 
         <div className="sched-list" role="list">
