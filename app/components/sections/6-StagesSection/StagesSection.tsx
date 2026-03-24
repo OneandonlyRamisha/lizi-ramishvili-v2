@@ -79,19 +79,7 @@ export default function StagesSection() {
         },
       });
 
-      gsap.from(".stages-meta", {
-        opacity: 0,
-        y: 30,
-        duration: 0.9,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".stages-meta",
-          start: "top 85%",
-          once: true,
-        },
-      });
-
-      gsap.utils.toArray<HTMLElement>(".stage-card").forEach((card, i) => {
+gsap.utils.toArray<HTMLElement>(".stage-card").forEach((card, i) => {
         gsap.from(card, {
           opacity: 0,
           clipPath: "inset(0 100% 0 0)",
@@ -114,27 +102,11 @@ export default function StagesSection() {
       <div className="stages-inner">
         <header className="stages-header">
           <span className="section-label">003 / Stages</span>
-          <div className="stages-title-row">
-            <h2 className="stages-heading">
-              World&rsquo;s
-              <br />
-              Great Stages
-            </h2>
-            <div className="stages-meta">
-              <div className="stage-meta-item">
-                <span className="stage-meta-number">87+</span>
-                <span className="stage-meta-label">Concerts</span>
-              </div>
-              <div className="stage-meta-item">
-                <span className="stage-meta-number">20+</span>
-                <span className="stage-meta-label">Stages</span>
-              </div>
-              <div className="stage-meta-item">
-                <span className="stage-meta-number">10+</span>
-                <span className="stage-meta-label">Countries</span>
-              </div>
-            </div>
-          </div>
+          <h2 className="stages-heading">
+            World&rsquo;s
+            <br />
+            Great Stages
+          </h2>
         </header>
 
         <div className="stages-grid">

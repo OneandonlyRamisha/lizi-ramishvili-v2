@@ -1,6 +1,6 @@
 "use client";
 
-import { RefObject } from "react";
+import { RefObject, useEffect, useRef } from "react";
 
 interface NavProps {
   mobileNavOpen: boolean;
@@ -10,10 +10,28 @@ interface NavProps {
 }
 
 export default function Nav({ mobileNavOpen, setMobileNavOpen, firstNavLinkRef }: NavProps) {
+  const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+
+    const onScroll = () => {
+      if (window.scrollY > 40) {
+        nav.classList.add("scrolled");
+      } else {
+        nav.classList.remove("scrolled");
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <>
       {/* ── NAV ── */}
-      <nav className="nav">
+      <nav className="nav" ref={navRef}>
         <a href="#hero" className="nav-logo">
           LR
         </a>

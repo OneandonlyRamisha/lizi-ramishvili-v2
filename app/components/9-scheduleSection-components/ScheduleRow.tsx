@@ -1,7 +1,6 @@
 "use client";
 
 interface ScheduleRowProps {
-  index: number;
   day: string;
   month: string;
   year: string;
@@ -14,7 +13,6 @@ interface ScheduleRowProps {
 }
 
 export default function ScheduleRow({
-  index,
   day,
   month,
   year,
@@ -27,10 +25,6 @@ export default function ScheduleRow({
 }: ScheduleRowProps) {
   return (
     <div className="sched-row" role="listitem">
-      <div className="sched-index" aria-hidden="true">
-        {String(index + 1).padStart(2, "0")}
-      </div>
-
       {/* Date zone */}
       <div className="sched-date">
         <span className="sched-day">{day}</span>
@@ -61,7 +55,7 @@ export default function ScheduleRow({
           {status === "sold-out"
             ? "Sold Out"
             : status === "enquire"
-              ? "Enquire →"
+              ? "Info Soon"
               : "Tickets →"}
         </a>
       </div>

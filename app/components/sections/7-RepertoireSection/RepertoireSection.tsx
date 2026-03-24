@@ -5,7 +5,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import RepertoireItem from "../../7-repertoireSection-components/RepertoireItem";
 
 const repertoire = [
   {
@@ -38,6 +37,11 @@ const repertoire = [
     composer: "Camille Saint-Saëns",
     opus: "Op. 33",
   },
+  {
+    piece: "Don Quixote",
+    composer: "Richard Strauss",
+    opus: "Op. 35",
+  },
 ];
 
 export default function RepertoireSection() {
@@ -57,7 +61,7 @@ export default function RepertoireSection() {
           once: true,
         },
       });
-      gsap.utils.toArray<HTMLElement>(".repertoire-item").forEach((item, i) => {
+      gsap.utils.toArray<HTMLElement>(".rep-row").forEach((item, i) => {
         gsap.from(item, {
           opacity: 0,
           y: 30,
@@ -92,17 +96,24 @@ export default function RepertoireSection() {
           <br />
           Works
         </h2>
-        <ul className="rep-list" role="list">
-          {repertoire.map((r, i) => (
-            <RepertoireItem
-              key={i}
-              index={i}
-              piece={r.piece}
-              composer={r.composer}
-              opus={r.opus}
-            />
+        <div className="rep-list">
+          {repertoire.slice(0, 7).map((r, i) => (
+            <div className="rep-row" key={i}>
+              <span className="rep-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+              <div className="rep-center">
+                <span className="rep-piece-name">{r.piece}</span>
+                <span className="rep-opus">{r.opus}</span>
+              </div>
+              <span className="rep-composer">{r.composer}</span>
+              <div className="rep-rule" aria-hidden="true" />
+            </div>
           ))}
-        </ul>
+        </div>
+        <div className="rep-footer">
+          <a href="/repertoire" className="rep-see-more">
+            See Full Repertoire <span aria-hidden="true">→</span>
+          </a>
+        </div>
       </div>
     </section>
   );

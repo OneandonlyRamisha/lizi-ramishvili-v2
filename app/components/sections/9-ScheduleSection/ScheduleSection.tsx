@@ -126,7 +126,6 @@ export default function ScheduleSection() {
           {schedule.map((ev, i) => (
             <ScheduleRow
               key={ev.id}
-              index={i}
               day={ev.day}
               month={ev.month}
               year={ev.year}

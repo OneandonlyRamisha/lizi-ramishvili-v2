@@ -59,13 +59,23 @@ export default function ContactSection() {
           <ContactForm />
         </div>
         <footer className="footer" role="contentinfo">
-          <div className="footer-logo">Lizi Ramishvili</div>
-          <nav className="footer-socials" aria-label="Social links">
-            <a href="#" className="footer-social-link">Instagram</a>
-            <a href="#" className="footer-social-link">YouTube</a>
-            <a href="#" className="footer-social-link">Spotify</a>
-          </nav>
-          <div className="footer-copy">© 2026 Lizi Ramishvili</div>
+          <div className="footer-top">
+            <div className="footer-logo">Lizi Ramishvili</div>
+            <nav className="footer-socials" aria-label="Social links">
+              <a href="#" className="footer-social-link">Instagram</a>
+              <a href="#" className="footer-social-link">YouTube</a>
+              <a href="#" className="footer-social-link">Spotify</a>
+            </nav>
+          </div>
+          <div className="footer-bottom">
+            <span className="footer-copy">© 2026 Lizi Ramishvili. All rights reserved.</span>
+            <span className="footer-made">
+              Made with <span className="footer-heart" aria-label="love">♡</span> by{" "}
+              <a href="https://lukaramishvili.com" className="footer-credit" target="_blank" rel="noopener noreferrer">
+                Luka Ramishvili
+              </a>
+            </span>
+          </div>
         </footer>
       </div>
     </section>

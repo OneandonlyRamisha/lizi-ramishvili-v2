@@ -11,13 +11,13 @@ export default function GlideSection() {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       gsap.to(".h-scroll-track", {
-        x: "-25%",
+        x: "-50%",
         ease: "none",
         scrollTrigger: {
           trigger: ".h-scroll-section",
           start: "top bottom",
           end: "bottom top",
-          scrub: 1,
+          scrub: 2,
         },
       });
     }, containerRef);
@@ -29,7 +29,7 @@ export default function GlideSection() {
       <div className="h-scroll-track">
         {[0, 1, 2, 3].map((i) => (
           <span key={i} className="h-scroll-text">
-            CONCERT · RECITAL · CHAMBER · SOLO · CONCERTO · TBILISI ·&nbsp;
+            LIZI RAMISHVILI · CARNEGIE HALL · WIGMORE HALL · BERLIN · PARIS · TBILISI · LONDON ·&nbsp;
           </span>
         ))}
       </div>

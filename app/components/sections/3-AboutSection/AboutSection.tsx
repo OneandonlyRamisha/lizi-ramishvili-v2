@@ -105,7 +105,8 @@ export default function AboutSection() {
 
   return (
     <section className="about-section" id="about" ref={containerRef}>
-      <span className="section-label">001 / Artist</span>
+      <div className="about-inner">
+      <span className="section-label">001 / About</span>
       <div className="about-layout">
         <BioSlideshow />
 
@@ -128,6 +129,7 @@ export default function AboutSection() {
           {/* Forbes award callout */}
           <BioAwardBox />
         </div>
+      </div>
       </div>
     </section>
   );
