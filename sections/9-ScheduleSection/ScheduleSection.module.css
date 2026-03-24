@@ -38,5 +38,5 @@
 }
 
 .schedList {
-  /* container for schedule rows */
+  display: block;
 }

@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Nav from "./0-general/Nav";
 import HeroSection from "../sections/1-HeroSection/HeroSection";
 import MarqueeSection from "../sections/2-MarqueeSection/MarqueeSection";
@@ -34,24 +32,6 @@ export default function HomePage() {
     }
   }, [mobileNavOpen]);
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const ctx = gsap.context(() => {
-      // ── NAV ENTRANCE ──
-      gsap.from(".nav", {
-        opacity: 0,
-        y: -24,
-        duration: 1,
-        delay: 0.3,
-        ease: "power2.out",
-      });
-    }, containerRef);
-
-    return () => {
-      ctx.revert();
-    };
-  }, []);
 
   return (
     <div className="site" ref={containerRef}>

@@ -7,7 +7,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScheduleRow from "../../components/9-scheduleSection-components/ScheduleRow";
 import styles from "./ScheduleSection.module.css";
-import rowStyles from "../../components/9-scheduleSection-components/ScheduleRow.module.css";
 import { schedule } from "../../app/data";
 
 export default function ScheduleSection() {
@@ -27,7 +26,7 @@ export default function ScheduleSection() {
           once: true,
         },
       });
-      gsap.utils.toArray<HTMLElement>(`.${rowStyles.schedRow}`).forEach((row, i) => {
+      gsap.utils.toArray<HTMLElement>('[role="listitem"]').forEach((row, i) => {
         gsap.from(row, {
           opacity: 0,
           clipPath: "inset(0 0 100% 0)",

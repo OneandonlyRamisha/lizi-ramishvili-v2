@@ -1,6 +1,7 @@
 "use client";
 
 import { RefObject, useEffect, useRef } from "react";
+import gsap from "gsap";
 import styles from "./Nav.module.css";
 
 interface NavProps {
@@ -16,6 +17,14 @@ export default function Nav({ mobileNavOpen, setMobileNavOpen, firstNavLinkRef }
   useEffect(() => {
     const nav = navRef.current;
     if (!nav) return;
+
+    gsap.from(nav, {
+      opacity: 0,
+      y: -24,
+      duration: 1,
+      delay: 0.3,
+      ease: "power2.out",
+    });
 
     const onScroll = () => {
       if (window.scrollY >= window.innerHeight) {
