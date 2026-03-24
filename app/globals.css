@@ -69,7 +69,10 @@ body {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   border-bottom: 1px solid transparent;
-  transition: background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease;
+  transition:
+    background 0.4s ease,
+    backdrop-filter 0.4s ease,
+    border-color 0.4s ease;
 }
 
 .nav.scrolled {
@@ -101,6 +104,7 @@ body {
 .nav-links a {
   font-family: var(--font-sans);
   font-size: 0.82rem;
+  cursor: pointer;
   font-weight: 500;
   color: var(--text-inverse);
   text-decoration: none;
@@ -123,8 +127,12 @@ body {
   transition: width 0.3s ease;
 }
 
-.nav-links a:hover { opacity: 1; }
-.nav-links a:hover::after { width: 100%; }
+.nav-links a:hover {
+  opacity: 1;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
 
 /* ── HERO ── */
 .hero {
@@ -259,8 +267,12 @@ body {
 }
 
 @keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /* ── SECTION LABEL ── */
@@ -1031,8 +1043,8 @@ body {
 
 /* ── REPERTOIRE ── */
 .repertoire-section {
-  background: var(--bg-dark);
-  color: var(--text-inverse);
+  background: var(--bg-cream);
+  color: var(--text-primary);
   padding: var(--section-pad) var(--gutter);
   overflow: hidden;
   position: relative;
@@ -1048,13 +1060,14 @@ body {
   font-size: clamp(3.5rem, 6.5vw, 9rem);
   font-weight: 700;
   line-height: 0.88;
-  color: var(--text-inverse);
+  color: var(--text-primary);
   margin-bottom: 5rem;
   overflow: hidden;
 }
 
 .rep-list {
   list-style: none;
+  border-top: 1px solid rgba(20, 18, 16, 0.1);
 }
 
 .rep-row {
@@ -1063,8 +1076,31 @@ body {
   align-items: center;
   column-gap: 2rem;
   padding: 2rem 0;
-  border-bottom: 1px solid rgba(247, 243, 238, 0.08);
+  padding-left: 0;
+  border-bottom: 1px solid rgba(20, 18, 16, 0.1);
   position: relative;
+  transition: padding-left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: default;
+}
+
+.rep-row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 0;
+  background: var(--accent);
+  transition: height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.rep-row:hover {
+  padding-left: 1.4rem;
+}
+
+.rep-row:hover::before {
+  height: 55%;
 }
 
 .rep-rule {
@@ -1076,10 +1112,15 @@ body {
   font-size: clamp(2rem, 4vw, 4rem);
   font-weight: 900;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(247, 243, 238, 0.18);
+  -webkit-text-stroke: 1px rgba(181, 42, 58, 0.2);
   line-height: 1;
   text-align: left;
   user-select: none;
+  transition: -webkit-text-stroke-color 0.4s ease;
+}
+
+.rep-row:hover .rep-num {
+  -webkit-text-stroke-color: rgba(181, 42, 58, 0.65);
 }
 
 .rep-center {
@@ -1093,13 +1134,18 @@ body {
   font-size: clamp(1.1rem, 2.2vw, 2rem);
   font-style: italic;
   font-weight: 600;
-  color: var(--text-inverse);
+  color: var(--text-primary);
+  transition: color 0.35s ease;
+}
+
+.rep-row:hover .rep-piece-name {
+  color: var(--accent);
 }
 
 .rep-opus {
   font-family: var(--font-sans);
   font-size: 0.95rem;
-  color: rgba(247, 243, 238, 0.45);
+  color: var(--text-muted);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -1108,10 +1154,15 @@ body {
   font-family: var(--font-sans);
   font-size: 0.7rem;
   font-weight: 500;
-  color: rgba(247, 243, 238, 0.5);
+  color: var(--text-muted);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-align: right;
+  transition: color 0.35s ease;
+}
+
+.rep-row:hover .rep-composer {
+  color: var(--text-secondary);
 }
 
 .rep-footer {
@@ -1129,22 +1180,26 @@ body {
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--text-inverse);
+  color: var(--text-primary);
   text-decoration: none;
-  border: 1px solid rgba(247, 243, 238, 0.2);
+  border: 1px solid rgba(20, 18, 16, 0.25);
   padding: 1.1rem 2.8rem;
-  transition: background 0.3s, border-color 0.3s;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease;
 }
 
 .rep-see-more:hover {
-  background: rgba(247, 243, 238, 0.05);
-  border-color: rgba(247, 243, 238, 0.5);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--text-inverse);
 }
 
 /* ── REPERTOIRE PAGE ── */
 .rep-page {
-  background: var(--bg-dark);
-  color: var(--text-inverse);
+  background: var(--bg-cream);
+  color: var(--text-primary);
   min-height: 100vh;
   padding: 5rem var(--gutter) 8rem;
 }
@@ -1167,9 +1222,13 @@ body {
   text-decoration: none;
   margin-bottom: 4rem;
   transition: color 0.3s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 .rep-page-back:hover {
-  color: var(--text-inverse);
+  color: var(--text-primary);
 }
 
 .rep-page-header {
@@ -1181,7 +1240,7 @@ body {
   font-size: clamp(3rem, 6vw, 8rem);
   font-weight: 700;
   line-height: 0.9;
-  color: var(--text-inverse);
+  color: var(--text-primary);
   margin-top: 1.5rem;
 }
 
@@ -1521,7 +1580,7 @@ body {
   font-size: clamp(8rem, 18vw, 28rem);
   font-weight: 900;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(247, 243, 238, 0.04);
+  -webkit-text-stroke: 1px rgba(20, 18, 16, 0.05);
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
@@ -1813,7 +1872,6 @@ body {
     display: flex;
   }
 }
-
 
 /* ── GALLERY CELL IMAGE & OVERLAY ── */
 .gallery-cell-img {

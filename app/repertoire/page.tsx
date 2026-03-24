@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import BackButton from "./BackButton";
 
 export const metadata: Metadata = {
   title: "Full Repertoire — Lizi Ramishvili",
@@ -31,7 +31,7 @@ export default function RepertoirePage() {
   return (
     <main className="rep-page">
       <div className="rep-page-inner">
-        <Link href="/" className="rep-page-back">← Back</Link>
+        <BackButton />
         <header className="rep-page-header">
           <span className="section-label">Full Repertoire</span>
           <h1 className="rep-page-title">Concert<br /><em>Repertoire</em></h1>

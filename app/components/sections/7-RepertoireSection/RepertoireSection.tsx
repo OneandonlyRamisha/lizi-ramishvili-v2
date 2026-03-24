@@ -88,18 +88,22 @@ export default function RepertoireSection() {
 
   return (
     <section className="repertoire-section" id="repertoire" ref={containerRef}>
-      <div className="rep-bg-text" aria-hidden="true">PROGRAMME</div>
+      <div className="rep-bg-text" aria-hidden="true">
+        PROGRAMME
+      </div>
       <div className="rep-inner">
         <span className="section-label">004 / Repertoire</span>
         <h2 className="rep-heading">
-          Signature
+          Concert
           <br />
-          Works
+          <span style={{ lineHeight: 1.25 }}>Repertoire</span>
         </h2>
         <div className="rep-list">
           {repertoire.slice(0, 7).map((r, i) => (
             <div className="rep-row" key={i}>
-              <span className="rep-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+              <span className="rep-num" aria-hidden="true">
+                {String(i + 1).padStart(2, "0")}
+              </span>
               <div className="rep-center">
                 <span className="rep-piece-name">{r.piece}</span>
                 <span className="rep-opus">{r.opus}</span>
