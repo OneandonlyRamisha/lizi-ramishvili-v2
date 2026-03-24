@@ -8,7 +8,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CompetitionRow from "../../4-recognitionSection-components/CompetitionRow";
 import AwardItem from "../../4-recognitionSection-components/AwardItem";
 import ScholarshipItem from "../../4-recognitionSection-components/ScholarshipItem";
-import _styles from "./RecognitionSection.module.css";
+import styles from "./RecognitionSection.module.css";
+import compStyles from "../../4-recognitionSection-components/CompetitionRow.module.css";
+import awardStyles from "../../4-recognitionSection-components/AwardItem.module.css";
+import scholarshipStyles from "../../4-recognitionSection-components/ScholarshipItem.module.css";
 
 const competitions = [
   {
@@ -71,18 +74,18 @@ export default function RecognitionSection() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
-      gsap.from(".rec-heading", {
+      gsap.from(`.${styles.recHeading}`, {
         opacity: 0,
         y: 60,
         duration: 1.2,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: ".rec-heading",
+          trigger: `.${styles.recHeading}`,
           start: "top 80%",
           once: true,
         },
       });
-      gsap.utils.toArray<HTMLElement>(".competition-row").forEach((row, i) => {
+      gsap.utils.toArray<HTMLElement>(`.${compStyles.competitionRow}`).forEach((row, i) => {
         gsap.from(row, {
           opacity: 0,
           x: -40,
@@ -92,7 +95,7 @@ export default function RecognitionSection() {
           scrollTrigger: { trigger: row, start: "top 88%", once: true },
         });
       });
-      gsap.utils.toArray<HTMLElement>(".award-item").forEach((el, i) => {
+      gsap.utils.toArray<HTMLElement>(`.${awardStyles.awardItem}`).forEach((el, i) => {
         gsap.from(el, {
           opacity: 0,
           y: 24,
@@ -102,7 +105,7 @@ export default function RecognitionSection() {
           scrollTrigger: { trigger: el, start: "top 88%", once: true },
         });
       });
-      gsap.utils.toArray<HTMLElement>(".scholarship-item").forEach((el, i) => {
+      gsap.utils.toArray<HTMLElement>(`.${scholarshipStyles.scholarshipItem}`).forEach((el, i) => {
         gsap.from(el, {
           opacity: 0,
           y: 20,
@@ -117,20 +120,20 @@ export default function RecognitionSection() {
   }, []);
 
   return (
-    <section className="recognition-section" id="recognition" ref={containerRef}>
-      <div className="rec-watermark" aria-hidden="true">I</div>
-      <div className="rec-inner">
+    <section className={styles.recognitionSection} id="recognition" ref={containerRef}>
+      <div className={styles.recWatermark} aria-hidden="true">I</div>
+      <div className={styles.recInner}>
         <span className="section-label">002 / Recognition</span>
-        <div className="rec-heading">
+        <div className={styles.recHeading}>
           <span>Honours</span>
-          <div className="rec-heading-note">
+          <div className={styles.recHeadingNote}>
             Competitions · Awards · Scholarships
           </div>
         </div>
 
         {/* Competitions */}
-        <div className="rec-competitions">
-          <span className="rec-sub-label">Competitions</span>
+        <div className={styles.recCompetitions}>
+          <span className={styles.recSubLabel}>Competitions</span>
           {competitions.map((c, i) => (
             <CompetitionRow
               key={i}
@@ -144,19 +147,19 @@ export default function RecognitionSection() {
         </div>
 
         {/* Awards + Scholarships */}
-        <div className="rec-bottom">
-          <div className="rec-awards">
-            <span className="rec-sub-label">Awards &amp; Honours</span>
+        <div className={styles.recBottom}>
+          <div>
+            <span className={styles.recSubLabel}>Awards &amp; Honours</span>
             {honours.map((h, i) => (
               <AwardItem key={i} year={h.year} name={h.name} detail={h.detail} />
             ))}
           </div>
 
           <div>
-            <span className="scholarship-intro">
+            <span className={styles.scholarshipIntro}>
               Foundations &amp; Scholarships
             </span>
-            <ul className="scholarship-list">
+            <ul className={styles.scholarshipList}>
               {scholarships.map((s, i) => (
                 <ScholarshipItem key={i} name={s.name} note={s.note} />
               ))}

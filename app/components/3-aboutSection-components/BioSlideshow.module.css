@@ -1,52 +1,50 @@
-:global {
-  /* ── BIO SLIDESHOW ── */
-  .bio-slideshow-frame {
-    position: relative;
-    aspect-ratio: 3 / 4;
-    overflow: hidden;
-    background: var(--bg-stone);
-  }
+/* ── BIO SLIDESHOW ── */
+.bioSlideshowFrame {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--bg-stone);
+}
 
-  .bio-slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 1.4s ease-in-out;
-  }
-  .bio-slide.active {
-    opacity: 1;
-  }
+.bioSlide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.4s ease-in-out;
+}
+.bioSlide.active {
+  opacity: 1;
+}
 
-  .bio-slide-img {
-    object-fit: cover;
-    object-position: center top;
-  }
+.bioSlideImg {
+  object-fit: cover;
+  object-position: center top;
+}
 
-  .slideshow-dots {
-    display: flex;
-    gap: 0.4rem;
-    margin-top: 1.2rem;
-  }
+.slideshowDots {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 1.2rem;
+}
 
-  .dot {
-    height: 2px;
-    width: 20px;
-    background: rgba(20, 18, 16, 0.18);
-    border: none;
-    padding: 0;
-    transition:
-      width 0.35s ease,
-      background 0.35s ease;
-    flex-shrink: 0;
-  }
-  .dot-active {
-    width: 36px;
-    background: var(--accent);
-  }
+.dot {
+  height: 2px;
+  width: 20px;
+  background: rgba(20, 18, 16, 0.18);
+  border: none;
+  padding: 0;
+  transition:
+    width 0.35s ease,
+    background 0.35s ease;
+  flex-shrink: 0;
+}
+.dotActive {
+  width: 36px;
+  background: var(--accent);
+}
 
-  @media (max-width: 900px) {
-    .bio-slideshow-frame {
-      aspect-ratio: 4 / 3;
-    }
+@media (max-width: 900px) {
+  .bioSlideshowFrame {
+    aspect-ratio: 4 / 3;
   }
 }

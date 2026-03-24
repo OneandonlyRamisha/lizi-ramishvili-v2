@@ -1,6 +1,6 @@
 "use client";
 
-import _styles from "./ScheduleRow.module.css";
+import styles from "./ScheduleRow.module.css";
 
 interface ScheduleRowProps {
   day: string;
@@ -25,31 +25,39 @@ export default function ScheduleRow({
   status,
   link,
 }: ScheduleRowProps) {
+  const btnClass = `${styles.schedBtn}${
+    status === "sold-out"
+      ? ` ${styles.soldOut}`
+      : status === "enquire"
+        ? ` ${styles.enquire}`
+        : ""
+  }`;
+
   return (
-    <div className="sched-row" role="listitem">
+    <div className={styles.schedRow} role="listitem">
       {/* Date zone */}
-      <div className="sched-date">
-        <span className="sched-day">{day}</span>
-        <span className="sched-month">
+      <div className={styles.schedDate}>
+        <span className={styles.schedDay}>{day}</span>
+        <span className={styles.schedMonth}>
           {month} {year}
         </span>
       </div>
 
       {/* Vertical separator */}
-      <div className="sched-sep" aria-hidden="true" />
+      <div className={styles.schedSep} aria-hidden="true" />
 
       {/* Info */}
-      <div className="sched-info">
-        <div className="sched-venue">{venue}</div>
-        <div className="sched-city">{city}</div>
-        <div className="sched-programme">{programme}</div>
+      <div className={styles.schedInfo}>
+        <div className={styles.schedVenue}>{venue}</div>
+        <div className={styles.schedCity}>{city}</div>
+        <div className={styles.schedProgramme}>{programme}</div>
       </div>
 
       {/* CTA */}
-      <div className="sched-cta">
-        <span className="sched-time">{time}</span>
+      <div className={styles.schedCta}>
+        <span className={styles.schedTime}>{time}</span>
         <a
-          className={`sched-btn${status === "sold-out" ? " sold-out" : status === "enquire" ? " enquire" : ""}`}
+          className={btnClass}
           href={link}
           target="_blank"
           rel="noopener noreferrer"

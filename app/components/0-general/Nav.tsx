@@ -1,7 +1,7 @@
 "use client";
 
 import { RefObject, useEffect, useRef } from "react";
-import _styles from "./Nav.module.css";
+import styles from "./Nav.module.css";
 
 interface NavProps {
   mobileNavOpen: boolean;
@@ -19,9 +19,9 @@ export default function Nav({ mobileNavOpen, setMobileNavOpen, firstNavLinkRef }
 
     const onScroll = () => {
       if (window.scrollY >= window.innerHeight) {
-        nav.classList.add("scrolled");
+        nav.classList.add(styles.scrolled);
       } else {
-        nav.classList.remove("scrolled");
+        nav.classList.remove(styles.scrolled);
       }
     };
 
@@ -32,11 +32,11 @@ export default function Nav({ mobileNavOpen, setMobileNavOpen, firstNavLinkRef }
   return (
     <>
       {/* ── NAV ── */}
-      <nav className="nav" ref={navRef}>
-        <a href="#hero" className="nav-logo">
+      <nav className={styles.nav} ref={navRef}>
+        <a href="#hero" className={styles.navLogo}>
           LR
         </a>
-        <ul className="nav-links">
+        <ul className={styles.navLinks}>
           <li><a href="#about">About</a></li>
           <li><a href="#recognition">Recognition</a></li>
           <li><a href="#repertoire">Repertoire</a></li>
@@ -48,7 +48,7 @@ export default function Nav({ mobileNavOpen, setMobileNavOpen, firstNavLinkRef }
 
       {/* ── MOBILE NAV OVERLAY ── */}
       <div
-        className={`mobile-nav${mobileNavOpen ? " open" : ""}`}
+        className={`${styles.mobileNav}${mobileNavOpen ? ` ${styles.open}` : ""}`}
         aria-hidden={!mobileNavOpen}
       >
         {[
@@ -73,7 +73,7 @@ export default function Nav({ mobileNavOpen, setMobileNavOpen, firstNavLinkRef }
 
       {/* ── HAMBURGER (fixed, always above overlay) ── */}
       <button
-        className={`nav-hamburger${mobileNavOpen ? " open" : ""}`}
+        className={`${styles.navHamburger}${mobileNavOpen ? ` ${styles.open}` : ""}`}
         aria-label={mobileNavOpen ? "Close menu" : "Open menu"}
         aria-expanded={mobileNavOpen}
         onClick={() => setMobileNavOpen((v) => !v)}

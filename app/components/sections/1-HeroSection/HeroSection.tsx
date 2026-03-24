@@ -1,13 +1,13 @@
 "use client";
 
-import _styles from "./HeroSection.module.css";
+import styles from "./HeroSection.module.css";
 
 export default function HeroSection() {
   return (
-    <section className="hero" id="hero">
+    <section className={styles.hero} id="hero">
       {/* Video background */}
       <video
-        className="hero-video"
+        className={styles.heroVideo}
         autoPlay
         muted
         loop
@@ -17,19 +17,19 @@ export default function HeroSection() {
       >
         <source src="/hero-vid.mp4" type="video/mp4" />
       </video>
-      <div className="hero-overlay" aria-hidden="true" />
+      <div className={styles.heroOverlay} aria-hidden="true" />
 
-      <div className="hero-content">
-        <span className="hero-eyebrow">Georgian Cellist</span>
-        <h1 className="hero-title">
-          <span className="hero-first">Lizi</span>
-          <span className="hero-last">Ramishvili</span>
+      <div className={styles.heroContent}>
+        <span className={styles.heroEyebrow}>Georgian Cellist</span>
+        <h1 className={styles.heroTitle}>
+          <span className={styles.heroFirst}>Lizi</span>
+          <span className={styles.heroLast}>Ramishvili</span>
         </h1>
       </div>
 
-      <div className="scroll-indicator" aria-hidden="true">
+      <div className={styles.scrollIndicator} aria-hidden="true">
         <span>Scroll</span>
-        <div className="scroll-line" />
+        <div className={styles.scrollLine} />
       </div>
     </section>
   );

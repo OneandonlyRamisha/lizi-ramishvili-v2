@@ -1,6 +1,6 @@
 "use client";
 
-import _styles from "./CompetitionRow.module.css";
+import styles from "./CompetitionRow.module.css";
 
 interface CompetitionRowProps {
   numeral: string;
@@ -18,16 +18,16 @@ export default function CompetitionRow({
   location,
 }: CompetitionRowProps) {
   return (
-    <div className="competition-row">
-      <span className="comp-numeral" aria-hidden="true">
+    <div className={styles.competitionRow}>
+      <span className={styles.compNumeral} aria-hidden="true">
         {numeral}
       </span>
       <div>
-        <span className="comp-prize">{prize}</span>
-        <div className="comp-name">{name}</div>
-        <div className="comp-location">{location}</div>
+        <span className={styles.compPrize}>{prize}</span>
+        <div className={styles.compName}>{name}</div>
+        <div className={styles.compLocation}>{location}</div>
       </div>
-      <div className="comp-year" aria-hidden="true">
+      <div className={styles.compYear} aria-hidden="true">
         {year ?? "—"}
       </div>
     </div>

@@ -6,11 +6,11 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PressCell from "../../8-pressSection-components/PressCell";
-import _styles from "./PressSection.module.css";
+import styles from "./PressSection.module.css";
 
 const pressCells = [
   {
-    gridClass: "gi-1",
+    gridClass: styles.gi1,
     href: "https://georgiatoday.ge/three-people-two-centuries-one-hall-a-chamber-music-night-at-the-tbilisi-conservatoire/",
     imageSrc: "/images/lizi-press.jpg",
     imageAlt: "Lizi Ramishvili performance",
@@ -20,17 +20,17 @@ const pressCells = [
     textClass: "",
   },
   {
-    gridClass: "gi-2",
+    gridClass: styles.gi2,
     href: "http://georgiatoday.ge/news/4572/Georgian-Musicians-to-Perform-at-Carnegie-Hall",
     imageSrc: "/images/stages/carnegie-hall.jpg",
     imageAlt: "Carnegie Hall",
     imageSizes: "(max-width:860px) 100vw, 42vw",
     label: "Carnegie Hall, NYC",
     lines: ["US", "Debut"],
-    textClass: "gc-large-num",
+    textClass: styles.gcLargeNum,
   },
   {
-    gridClass: "gi-3",
+    gridClass: styles.gi3,
     href: "https://agenda.ge/en/news/2017/1776",
     imageSrc: "/images/stages/kloster-eberbach.jpg",
     imageAlt: "Kloster Eberbach, Rheingau",
@@ -40,7 +40,7 @@ const pressCells = [
     textClass: "",
   },
   {
-    gridClass: "gi-4",
+    gridClass: styles.gi4,
     href: "https://www.facebook.com/khatiabuniatishvili/photos/1268180713234781/",
     imageSrc: "/images/biography/bio2.jpg",
     imageAlt: "Lizi Ramishvili",
@@ -50,7 +50,7 @@ const pressCells = [
     textClass: "",
   },
   {
-    gridClass: "gi-5",
+    gridClass: styles.gi5,
     href: "https://www.liziramishvili.com/",
     imageSrc: "/images/biography/bio4.jpg",
     imageAlt: "Lizi Ramishvili",
@@ -60,7 +60,7 @@ const pressCells = [
     textClass: "",
   },
   {
-    gridClass: "gi-6",
+    gridClass: styles.gi6,
     href: "https://www.sommets-musicaux.com/artist/lizi-ramishvili/?lang=en",
     imageSrc: "/images/biography/bio1.jpg",
     imageAlt: "Lizi Ramishvili at festival",
@@ -77,18 +77,18 @@ export default function PressSection() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
-      gsap.from(".gallery-heading", {
+      gsap.from(`.${styles.galleryHeading}`, {
         opacity: 0,
         y: 50,
         duration: 1.2,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: ".gallery-heading",
+          trigger: `.${styles.galleryHeading}`,
           start: "top 80%",
           once: true,
         },
       });
-      gsap.utils.toArray<HTMLElement>(".gallery-item").forEach((item, i) => {
+      gsap.utils.toArray<HTMLElement>(`.${styles.galleryItem}`).forEach((item, i) => {
         gsap.from(item, {
           opacity: 0,
           y: 40,
@@ -104,17 +104,17 @@ export default function PressSection() {
   }, []);
 
   return (
-    <section className="gallery-section" id="gallery" ref={containerRef}>
-      <div className="gallery-inner">
+    <section className={styles.gallerySection} id="gallery" ref={containerRef}>
+      <div className={styles.galleryInner}>
         <span className="section-label">005 / Press</span>
-        <h2 className="gallery-heading">
+        <h2 className={styles.galleryHeading}>
           Press
           <br />
           &amp; Media
         </h2>
-        <div className="gallery-grid" role="list">
-          {pressCells.map((cell) => (
-            <div key={cell.gridClass} className={`gallery-item ${cell.gridClass}`} role="listitem">
+        <div className={styles.galleryGrid} role="list">
+          {pressCells.map((cell, idx) => (
+            <div key={idx} className={`${styles.galleryItem} ${cell.gridClass}`} role="listitem">
               <PressCell
                 href={cell.href}
                 imageSrc={cell.imageSrc}

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import _styles from "./StageCard.module.css";
+import styles from "./StageCard.module.css";
 
 interface StageCardProps {
   className: string;
@@ -21,20 +21,20 @@ export default function StageCard({
   index,
 }: StageCardProps) {
   return (
-    <div className={`stage-card ${className}`}>
+    <div className={`${styles.stageCard} ${className}`}>
       {image && (
         <div
-          className="stage-bg"
+          className={styles.stageBg}
           style={{ "--stage-bg": `url(${image})` } as React.CSSProperties}
         />
       )}
-      <div className="stage-overlay" />
-      <div className="stage-content">
-        {festival && <div className="stage-festival">{festival}</div>}
-        <div className="stage-name">{name}</div>
-        <div className="stage-location">{location}</div>
+      <div className={styles.stageOverlay} />
+      <div className={styles.stageContent}>
+        {festival && <div className={styles.stageFestival}>{festival}</div>}
+        <div className={styles.stageName}>{name}</div>
+        <div className={styles.stageLocation}>{location}</div>
       </div>
-      <div className="stage-number" aria-hidden="true">
+      <div className={styles.stageNumber} aria-hidden="true">
         {String(index + 1).padStart(2, "0")}
       </div>
     </div>

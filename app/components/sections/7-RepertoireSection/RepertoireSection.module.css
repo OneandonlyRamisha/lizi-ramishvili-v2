@@ -1,76 +1,170 @@
-:global {
-  /* ── REPERTOIRE ── */
-  .repertoire-section {
-    background: var(--bg-cream);
-    color: var(--text-primary);
-    padding: var(--section-pad) var(--gutter);
-    overflow: hidden;
-    position: relative;
-  }
+/* ── REPERTOIRE ── */
+.repertoireSection {
+  background: var(--bg-cream);
+  color: var(--text-primary);
+  padding: var(--section-pad) var(--gutter);
+  overflow: hidden;
+  position: relative;
+}
 
-  .rep-inner {
-    max-width: var(--max-w);
-    margin: 0 auto;
-  }
+.repInner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
 
-  .rep-heading {
-    font-family: var(--font-serif);
-    font-size: clamp(3.5rem, 6.5vw, 9rem);
-    font-weight: 700;
-    line-height: 0.88;
-    color: var(--text-primary);
-    margin-bottom: 5rem;
-    overflow: hidden;
-  }
+.repHeading {
+  font-family: var(--font-serif);
+  font-size: clamp(3.5rem, 6.5vw, 9rem);
+  font-weight: 700;
+  line-height: 0.88;
+  color: var(--text-primary);
+  margin-bottom: 5rem;
+  overflow: hidden;
+}
 
-  .rep-list {
-    list-style: none;
-    border-top: 1px solid rgba(20, 18, 16, 0.1);
-  }
+.repList {
+  list-style: none;
+  border-top: 1px solid rgba(20, 18, 16, 0.1);
+}
 
-  .rep-footer {
-    display: flex;
-    justify-content: center;
-    padding: 4rem 0 0;
-  }
+.repFooter {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 0 0;
+}
 
-  .rep-see-more {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    font-family: var(--font-sans);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--text-primary);
-    text-decoration: none;
-    border: 1px solid rgba(20, 18, 16, 0.25);
-    padding: 1.1rem 2.8rem;
-    transition:
-      background 0.35s ease,
-      border-color 0.35s ease,
-      color 0.35s ease;
-  }
+.repSeeMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  text-decoration: none;
+  border: 1px solid rgba(20, 18, 16, 0.25);
+  padding: 1.1rem 2.8rem;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease;
+}
 
-  .rep-see-more:hover {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: var(--text-inverse);
-  }
+.repSeeMore:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--text-inverse);
+}
 
-  .rep-bg-text {
-    position: absolute;
-    top: 50%;
-    right: -5%;
-    transform: translateY(-50%);
-    font-family: var(--font-serif);
-    font-size: clamp(8rem, 18vw, 28rem);
-    font-weight: 900;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(20, 18, 16, 0.05);
-    white-space: nowrap;
-    pointer-events: none;
-    user-select: none;
-  }
+.repBgText {
+  position: absolute;
+  top: 50%;
+  right: -5%;
+  transform: translateY(-50%);
+  font-family: var(--font-serif);
+  font-size: clamp(8rem, 18vw, 28rem);
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(20, 18, 16, 0.05);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── SHARED REP ROW CLASSES (also used in app/repertoire/page.tsx) ── */
+.repRow {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto;
+  align-items: center;
+  column-gap: 2rem;
+  padding: 2rem 0;
+  padding-left: 0;
+  border-bottom: 1px solid rgba(20, 18, 16, 0.1);
+  position: relative;
+  transition: padding-left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: default;
+}
+
+.repRow::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 0;
+  background: var(--accent);
+  transition: height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.repRow:hover {
+  padding-left: 1.4rem;
+}
+
+.repRow:hover::before {
+  height: 55%;
+}
+
+.repRule {
+  display: none;
+}
+
+.repNum {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(181, 42, 58, 0.2);
+  line-height: 1;
+  text-align: left;
+  user-select: none;
+  transition: -webkit-text-stroke-color 0.4s ease;
+}
+
+.repRow:hover .repNum {
+  -webkit-text-stroke-color: rgba(181, 42, 58, 0.65);
+}
+
+.repCenter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.repPieceName {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2.2vw, 2rem);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color 0.35s ease;
+}
+
+.repRow:hover .repPieceName {
+  color: var(--accent);
+}
+
+.repOpus {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.repComposer {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: right;
+  transition: color 0.35s ease;
+}
+
+.repRow:hover .repComposer {
+  color: var(--text-secondary);
 }

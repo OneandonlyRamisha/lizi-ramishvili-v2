@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import BackButton from "./BackButton";
-import "./repertoire-page.css";
+import styles from "./repertoire-page.module.css";
+import repStyles from "../components/sections/7-RepertoireSection/RepertoireSection.module.css";
 
 export const metadata: Metadata = {
   title: "Full Repertoire — Lizi Ramishvili",
@@ -30,22 +31,22 @@ const fullRepertoire = [
 
 export default function RepertoirePage() {
   return (
-    <main className="rep-page">
-      <div className="rep-page-inner">
+    <main className={styles.repPage}>
+      <div className={styles.repPageInner}>
         <BackButton />
-        <header className="rep-page-header">
+        <header className={styles.repPageHeader}>
           <span className="section-label">Full Repertoire</span>
-          <h1 className="rep-page-title">Concert<br /><em>Repertoire</em></h1>
+          <h1 className={styles.repPageTitle}>Concert<br /><em>Repertoire</em></h1>
         </header>
-        <div className="rep-list">
+        <div className={repStyles.repList}>
           {fullRepertoire.map((r, i) => (
-            <div className="rep-row" key={i}>
-              <span className="rep-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
-              <div className="rep-center">
-                <span className="rep-piece-name">{r.piece}</span>
-                <span className="rep-opus">{r.opus}</span>
+            <div className={repStyles.repRow} key={i}>
+              <span className={repStyles.repNum} aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+              <div className={repStyles.repCenter}>
+                <span className={repStyles.repPieceName}>{r.piece}</span>
+                <span className={repStyles.repOpus}>{r.opus}</span>
               </div>
-              <span className="rep-composer">{r.composer}</span>
+              <span className={repStyles.repComposer}>{r.composer}</span>
             </div>
           ))}
         </div>

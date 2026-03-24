@@ -8,7 +8,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import BioSlideshow from "../../3-aboutSection-components/BioSlideshow";
 import BioChapter from "../../3-aboutSection-components/BioChapter";
 import BioAwardBox from "../../3-aboutSection-components/BioAwardBox";
-import _styles from "./AboutSection.module.css";
+import styles from "./AboutSection.module.css";
+import bioChapterStyles from "../../3-aboutSection-components/BioChapter.module.css";
+import bioAwardStyles from "../../3-aboutSection-components/BioAwardBox.module.css";
 
 const bioChapters = [
   {
@@ -50,7 +52,7 @@ export default function AboutSection() {
           once: true,
         },
       });
-      gsap.from(".about-slideshow-col", {
+      gsap.from(`.${styles.aboutSlideshowCol}`, {
         opacity: 0,
         x: -50,
         duration: 1.3,
@@ -61,25 +63,25 @@ export default function AboutSection() {
           once: true,
         },
       });
-      gsap.from(".bio-name", {
+      gsap.from(`.${styles.bioName}`, {
         opacity: 0,
         y: 40,
         duration: 1.1,
         ease: "power3.out",
-        scrollTrigger: { trigger: ".bio-name", start: "top 82%", once: true },
+        scrollTrigger: { trigger: `.${styles.bioName}`, start: "top 82%", once: true },
       });
-      gsap.from(".bio-title-row", {
+      gsap.from(`.${styles.bioTitleRow}`, {
         opacity: 0,
         y: 20,
         duration: 0.8,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: ".bio-title-row",
+          trigger: `.${styles.bioTitleRow}`,
           start: "top 86%",
           once: true,
         },
       });
-      gsap.utils.toArray<HTMLElement>(".bio-chapter").forEach((el, i) => {
+      gsap.utils.toArray<HTMLElement>(`.${bioChapterStyles.bioChapter}`).forEach((el, i) => {
         gsap.from(el, {
           opacity: 0,
           y: 30,
@@ -89,13 +91,13 @@ export default function AboutSection() {
           scrollTrigger: { trigger: el, start: "top 88%", once: true },
         });
       });
-      gsap.from(".bio-award-box", {
+      gsap.from(`.${bioAwardStyles.bioAwardBox}`, {
         opacity: 0,
         y: 24,
         duration: 0.9,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: ".bio-award-box",
+          trigger: `.${bioAwardStyles.bioAwardBox}`,
           start: "top 90%",
           once: true,
         },
@@ -105,22 +107,24 @@ export default function AboutSection() {
   }, []);
 
   return (
-    <section className="about-section" id="about" ref={containerRef}>
-      <div className="about-inner">
+    <section className={styles.aboutSection} id="about" ref={containerRef}>
+      <div className={styles.aboutInner}>
       <span className="section-label">001 / About</span>
-      <div className="about-layout">
-        <BioSlideshow />
+      <div className={styles.aboutLayout}>
+        <div className={styles.aboutSlideshowCol}>
+          <BioSlideshow />
+        </div>
 
         {/* Right — biography text */}
-        <div className="about-bio-col">
-          <h2 className="bio-name">
+        <div className={styles.aboutBioCol}>
+          <h2 className={styles.bioName}>
             Lizi
             <br />
             Ramishvili
           </h2>
-          <div className="bio-title-row">
-            <span className="bio-title">Cellist · Concert Artist</span>
-            <div className="bio-title-line" aria-hidden="true" />
+          <div className={styles.bioTitleRow}>
+            <span className={styles.bioTitle}>Cellist · Concert Artist</span>
+            <div className={styles.bioTitleLine} aria-hidden="true" />
           </div>
 
           {bioChapters.map((ch, i) => (

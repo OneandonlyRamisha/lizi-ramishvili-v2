@@ -1,6 +1,8 @@
 "use client";
 
-import _styles from "./Cursor.module.css";
+import styles from "./Cursor.module.css";
+
+void styles; // module imported for completeness; cursor classes live in globals.css
 
 export default function Cursor() {
   return (

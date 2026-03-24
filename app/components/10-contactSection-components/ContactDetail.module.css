@@ -1,21 +1,19 @@
-:global {
-  /* ── CONTACT DETAIL ── */
-  .contact-detail {
-    margin-bottom: 1.8rem;
-  }
+/* ── CONTACT DETAIL ── */
+.contactDetail {
+  margin-bottom: 1.8rem;
+}
 
-  .contact-detail-label {
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 0.35rem;
-  }
+.contactDetailLabel {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
 
-  .contact-detail-value {
-    font-size: clamp(1.1rem, 1.4vw, 1.25rem);
-    color: var(--text-primary);
-  }
+.contactDetailValue {
+  font-size: clamp(1.1rem, 1.4vw, 1.25rem);
+  color: var(--text-primary);
 }

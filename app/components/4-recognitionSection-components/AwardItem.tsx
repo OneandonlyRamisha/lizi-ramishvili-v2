@@ -1,6 +1,6 @@
 "use client";
 
-import _styles from "./AwardItem.module.css";
+import styles from "./AwardItem.module.css";
 
 interface AwardItemProps {
   year: string;
@@ -10,12 +10,12 @@ interface AwardItemProps {
 
 export default function AwardItem({ year, name, detail }: AwardItemProps) {
   return (
-    <div className="award-item">
-      <span className="award-glyph" aria-hidden="true">✦</span>
+    <div className={styles.awardItem}>
+      <span className={styles.awardGlyph} aria-hidden="true">✦</span>
       <div>
-        <span className="award-year">{year}</span>
-        <div className="award-name">{name}</div>
-        <div className="award-detail">{detail}</div>
+        <span className={styles.awardYear}>{year}</span>
+        <div className={styles.awardName}>{name}</div>
+        <div className={styles.awardDetail}>{detail}</div>
       </div>
     </div>
   );

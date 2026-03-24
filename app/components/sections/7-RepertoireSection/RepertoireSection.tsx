@@ -5,7 +5,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import _styles from "./RepertoireSection.module.css";
+import styles from "./RepertoireSection.module.css";
 
 const repertoire = [
   {
@@ -51,18 +51,18 @@ export default function RepertoireSection() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
-      gsap.from(".rep-heading", {
+      gsap.from(`.${styles.repHeading}`, {
         opacity: 0,
         y: 60,
         duration: 1.2,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: ".rep-heading",
+          trigger: `.${styles.repHeading}`,
           start: "top 80%",
           once: true,
         },
       });
-      gsap.utils.toArray<HTMLElement>(".rep-row").forEach((item, i) => {
+      gsap.utils.toArray<HTMLElement>(`.${styles.repRow}`).forEach((item, i) => {
         gsap.from(item, {
           opacity: 0,
           y: 30,
@@ -71,7 +71,7 @@ export default function RepertoireSection() {
           ease: "power3.out",
           scrollTrigger: { trigger: item, start: "top 90%", once: true },
         });
-        const nameEl = item.querySelector(".rep-piece-name");
+        const nameEl = item.querySelector(`.${styles.repPieceName}`);
         if (nameEl) {
           gsap.from(nameEl, {
             x: -40,
@@ -88,34 +88,34 @@ export default function RepertoireSection() {
   }, []);
 
   return (
-    <section className="repertoire-section" id="repertoire" ref={containerRef}>
-      <div className="rep-bg-text" aria-hidden="true">
+    <section className={styles.repertoireSection} id="repertoire" ref={containerRef}>
+      <div className={styles.repBgText} aria-hidden="true">
         PROGRAMME
       </div>
-      <div className="rep-inner">
+      <div className={styles.repInner}>
         <span className="section-label">004 / Repertoire</span>
-        <h2 className="rep-heading">
+        <h2 className={styles.repHeading}>
           Concert
           <br />
           <span style={{ lineHeight: 1.25 }}>Repertoire</span>
         </h2>
-        <div className="rep-list">
+        <div className={styles.repList}>
           {repertoire.slice(0, 7).map((r, i) => (
-            <div className="rep-row" key={i}>
-              <span className="rep-num" aria-hidden="true">
+            <div className={styles.repRow} key={i}>
+              <span className={styles.repNum} aria-hidden="true">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <div className="rep-center">
-                <span className="rep-piece-name">{r.piece}</span>
-                <span className="rep-opus">{r.opus}</span>
+              <div className={styles.repCenter}>
+                <span className={styles.repPieceName}>{r.piece}</span>
+                <span className={styles.repOpus}>{r.opus}</span>
               </div>
-              <span className="rep-composer">{r.composer}</span>
-              <div className="rep-rule" aria-hidden="true" />
+              <span className={styles.repComposer}>{r.composer}</span>
+              <div className={styles.repRule} aria-hidden="true" />
             </div>
           ))}
         </div>
-        <div className="rep-footer">
-          <a href="/repertoire" className="rep-see-more">
+        <div className={styles.repFooter}>
+          <a href="/repertoire" className={styles.repSeeMore}>
             See Full Repertoire <span aria-hidden="true">→</span>
           </a>
         </div>

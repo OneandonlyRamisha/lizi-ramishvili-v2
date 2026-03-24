@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import _styles from "./BioSlideshow.module.css";
+import styles from "./BioSlideshow.module.css";
 
 const BIO_IMAGES = [
   "/images/biography/bio1.jpg",
@@ -23,19 +23,19 @@ export default function BioSlideshow() {
   }, []);
 
   return (
-    <div className="about-slideshow-col">
-      <div className="bio-slideshow-frame">
+    <>
+      <div className={styles.bioSlideshowFrame}>
         {BIO_IMAGES.map((src, i) => (
           <div
             key={i}
-            className={`bio-slide${i === currentSlide ? " active" : ""}`}
+            className={`${styles.bioSlide}${i === currentSlide ? ` ${styles.active}` : ""}`}
           >
             <Image
               src={src}
               alt={`Lizi Ramishvili — photograph ${i + 1}`}
               fill
               sizes="(max-width: 900px) 100vw, 42vw"
-              className="bio-slide-img"
+              className={styles.bioSlideImg}
               priority={i === 0}
             />
           </div>
@@ -43,14 +43,14 @@ export default function BioSlideshow() {
       </div>
       {/* Dot indicators */}
       <div
-        className="slideshow-dots"
+        className={styles.slideshowDots}
         role="tablist"
         aria-label="Biography photos"
       >
         {BIO_IMAGES.map((_, i) => (
           <button
             key={i}
-            className={`dot${i === currentSlide ? " dot-active" : ""}`}
+            className={`${styles.dot}${i === currentSlide ? ` ${styles.dotActive}` : ""}`}
             role="tab"
             aria-selected={i === currentSlide}
             aria-label={`Photo ${i + 1}`}
@@ -64,6 +64,6 @@ export default function BioSlideshow() {
           />
         ))}
       </div>
-    </div>
+    </>
   );
 }

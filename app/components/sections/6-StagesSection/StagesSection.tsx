@@ -6,7 +6,8 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import StageCard from "../../6-stagesSection-components/StageCard";
-import _styles from "./StagesSection.module.css";
+import styles from "./StagesSection.module.css";
+import cardStyles from "../../6-stagesSection-components/StageCard.module.css";
 
 const stages = [
   {
@@ -15,7 +16,7 @@ const stages = [
     location: "New York, USA",
     festival: null,
     image: "/images/stages/carnegie-hall.jpg",
-    className: "sc-a",
+    className: cardStyles.scA,
   },
   {
     id: "kloster",
@@ -23,7 +24,7 @@ const stages = [
     location: "Rheingau, Germany",
     festival: "Rheingau Musik Festival",
     image: "/images/stages/kloster-eberbach.jpg",
-    className: "sc-b",
+    className: cardStyles.scB,
   },
   {
     id: "tbilisi",
@@ -31,7 +32,7 @@ const stages = [
     location: "Tbilisi, Georgia",
     festival: "International Rostropovich Festival",
     image: "/images/stages/tbilisi-conservatoire.jpg",
-    className: "sc-c",
+    className: cardStyles.scC,
   },
   {
     id: "berlin",
@@ -39,7 +40,7 @@ const stages = [
     location: "Berlin, Germany",
     festival: "Young Euro Classic",
     image: null,
-    className: "sc-d sg-berlin",
+    className: `${cardStyles.scD} ${cardStyles.sgBerlin}`,
   },
   {
     id: "schubertiade",
@@ -47,7 +48,7 @@ const stages = [
     location: "Schwarzenberg, Austria",
     festival: "Schubertiade Festival",
     image: null,
-    className: "sc-e sg-schubertiade",
+    className: `${cardStyles.scE} ${cardStyles.sgSchubertiade}`,
   },
   {
     id: "gstaad",
@@ -55,7 +56,7 @@ const stages = [
     location: "Gstaad, Switzerland",
     festival: "Sommets Musicaux de Gstaad",
     image: null,
-    className: "sc-f sg-gstaad",
+    className: `${cardStyles.scF} ${cardStyles.sgGstaad}`,
   },
 ];
 
@@ -68,19 +69,19 @@ export default function StagesSection() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
-      gsap.from(".stages-heading", {
+      gsap.from(`.${styles.stagesHeading}`, {
         opacity: 0,
         y: 60,
         duration: 1.3,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: ".stages-heading",
+          trigger: `.${styles.stagesHeading}`,
           start: "top 82%",
           once: true,
         },
       });
 
-gsap.utils.toArray<HTMLElement>(".stage-card").forEach((card, i) => {
+      gsap.utils.toArray<HTMLElement>(`.${cardStyles.stageCard}`).forEach((card, i) => {
         gsap.from(card, {
           opacity: 0,
           clipPath: "inset(0 100% 0 0)",
@@ -88,7 +89,7 @@ gsap.utils.toArray<HTMLElement>(".stage-card").forEach((card, i) => {
           delay: i * 0.08,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: ".stages-grid",
+            trigger: `.${styles.stagesGrid}`,
             start: "top 80%",
             once: true,
           },
@@ -99,18 +100,18 @@ gsap.utils.toArray<HTMLElement>(".stage-card").forEach((card, i) => {
   }, []);
 
   return (
-    <section className="stages-section" id="stages" ref={containerRef}>
-      <div className="stages-inner">
-        <header className="stages-header">
+    <section className={styles.stagesSection} id="stages" ref={containerRef}>
+      <div className={styles.stagesInner}>
+        <header className={styles.stagesHeader}>
           <span className="section-label">003 / Stages</span>
-          <h2 className="stages-heading">
+          <h2 className={styles.stagesHeading}>
             World&rsquo;s
             <br />
             Great Stages
           </h2>
         </header>
 
-        <div className="stages-grid">
+        <div className={styles.stagesGrid}>
           {stages.map((s, i) => (
             <StageCard
               key={s.id}
@@ -124,10 +125,10 @@ gsap.utils.toArray<HTMLElement>(".stage-card").forEach((card, i) => {
           ))}
         </div>
 
-        <div className="stages-also" aria-hidden="true">
-          <span className="stages-also-label">Also performed at</span>
-          <div className="stages-also-marquee">
-            <div className="stages-also-track">
+        <div className={styles.stagesAlso} aria-hidden="true">
+          <span className={styles.stagesAlsoLabel}>Also performed at</span>
+          <div className={styles.stagesAlsoMarquee}>
+            <div className={styles.stagesAlsoTrack}>
               <span>{STAGES_ALSO}</span>
               <span>{STAGES_ALSO}</span>
               <span>{STAGES_ALSO}</span>

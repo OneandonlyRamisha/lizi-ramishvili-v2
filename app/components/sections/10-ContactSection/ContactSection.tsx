@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ContactForm from "../../10-contactSection-components/ContactForm";
 import ContactDetail from "../../10-contactSection-components/ContactDetail";
-import _styles from "./ContactSection.module.css";
+import styles from "./ContactSection.module.css";
 
 export default function ContactSection() {
   const containerRef = useRef<HTMLElement>(null);
@@ -14,25 +14,25 @@ export default function ContactSection() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
-      gsap.from(".contact-heading", {
+      gsap.from(`.${styles.contactHeading}`, {
         opacity: 0,
         y: 70,
         duration: 1.4,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: ".contact-heading",
+          trigger: `.${styles.contactHeading}`,
           start: "top 80%",
           once: true,
         },
       });
-      gsap.from(".contact-grid > *", {
+      gsap.from(`.${styles.contactGrid} > *`, {
         opacity: 0,
         y: 40,
         stagger: 0.2,
         duration: 1,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: ".contact-grid",
+          trigger: `.${styles.contactGrid}`,
           start: "top 78%",
           once: true,
         },
@@ -42,16 +42,16 @@ export default function ContactSection() {
   }, []);
 
   return (
-    <section className="contact-section" id="contact" ref={containerRef}>
-      <div className="contact-bg-text" aria-hidden="true">CONNECT</div>
-      <div className="contact-inner">
-        <h2 className="contact-heading">
+    <section className={styles.contactSection} id="contact" ref={containerRef}>
+      <div className={styles.contactBgText} aria-hidden="true">CONNECT</div>
+      <div className={styles.contactInner}>
+        <h2 className={styles.contactHeading}>
           Let&rsquo;s
           <br />
-          <span className="contact-accent">Connect</span>
+          <span className={styles.contactAccent}>Connect</span>
         </h2>
-        <div className="contact-grid">
-          <div className="contact-info">
+        <div className={styles.contactGrid}>
+          <div className={styles.contactInfo}>
             <h3>Get in Touch</h3>
             <ContactDetail label="Management" value="management@liziramishvili.com" />
             <ContactDetail label="Bookings" value="bookings@liziramishvili.com" />
@@ -59,20 +59,20 @@ export default function ContactSection() {
           </div>
           <ContactForm />
         </div>
-        <footer className="footer" role="contentinfo">
-          <div className="footer-top">
-            <div className="footer-logo">Lizi Ramishvili</div>
-            <nav className="footer-socials" aria-label="Social links">
-              <a href="#" className="footer-social-link">Instagram</a>
-              <a href="#" className="footer-social-link">YouTube</a>
-              <a href="#" className="footer-social-link">Spotify</a>
+        <footer className={styles.footer} role="contentinfo">
+          <div className={styles.footerTop}>
+            <div className={styles.footerLogo}>Lizi Ramishvili</div>
+            <nav className={styles.footerSocials} aria-label="Social links">
+              <a href="#" className={styles.footerSocialLink}>Instagram</a>
+              <a href="#" className={styles.footerSocialLink}>YouTube</a>
+              <a href="#" className={styles.footerSocialLink}>Spotify</a>
             </nav>
           </div>
-          <div className="footer-bottom">
-            <span className="footer-copy">© 2026 Lizi Ramishvili. All rights reserved.</span>
-            <span className="footer-made">
-              Made with <span className="footer-heart" aria-label="love">♡</span> by{" "}
-              <a href="https://lukaramishvili.com" className="footer-credit" target="_blank" rel="noopener noreferrer">
+          <div className={styles.footerBottom}>
+            <span className={styles.footerCopy}>© 2026 Lizi Ramishvili. All rights reserved.</span>
+            <span className={styles.footerMade}>
+              Made with <span className={styles.footerHeart} aria-label="love">♡</span> by{" "}
+              <a href="https://lukaramishvili.com" className={styles.footerCredit} target="_blank" rel="noopener noreferrer">
                 Luka Ramishvili
               </a>
             </span>

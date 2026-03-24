@@ -1,16 +1,16 @@
 "use client";
 
-import _styles from "./BioAwardBox.module.css";
+import styles from "./BioAwardBox.module.css";
 
 export default function BioAwardBox() {
   return (
-    <div className="bio-award-box" aria-label="Forbes recognition">
-      <div className="bio-award-icon" aria-hidden="true">
+    <div className={styles.bioAwardBox} aria-label="Forbes recognition">
+      <div className={styles.bioAwardIcon} aria-hidden="true">
         ✦
       </div>
-      <div className="bio-award-content">
-        <span className="bio-award-label">Recognition</span>
-        <span className="bio-award-title">
+      <div>
+        <span className={styles.bioAwardLabel}>Recognition</span>
+        <span className={styles.bioAwardTitle}>
           Forbes Georgia — 30 Under 30
           <br />
           Culture &amp; Style · 2021

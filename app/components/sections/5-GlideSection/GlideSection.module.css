@@ -1,26 +1,24 @@
-:global {
-  /* ── HORIZONTAL SCROLL TEXT ── */
-  .h-scroll-section {
-    overflow: hidden;
-    padding: 3rem 0;
-    background: var(--bg-dark);
-  }
+/* ── HORIZONTAL SCROLL TEXT ── */
+.hScrollSection {
+  overflow: hidden;
+  padding: 3rem 0;
+  background: var(--bg-dark);
+}
 
-  .h-scroll-text {
-    font-family: var(--font-serif);
-    font-size: clamp(7rem, 14vw, 20rem);
-    font-weight: 900;
-    color: transparent;
-    -webkit-text-stroke: 3px rgba(247, 243, 238, 0.55);
-    white-space: nowrap;
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
+.hScrollText {
+  font-family: var(--font-serif);
+  font-size: clamp(7rem, 14vw, 20rem);
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 3px rgba(247, 243, 238, 0.55);
+  white-space: nowrap;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
 
-  /* ── H-SCROLL TRACK ── */
-  .h-scroll-track {
-    display: flex;
-    white-space: nowrap;
-    will-change: transform;
-  }
+/* ── H-SCROLL TRACK ── */
+.hScrollTrack {
+  display: flex;
+  white-space: nowrap;
+  will-change: transform;
 }

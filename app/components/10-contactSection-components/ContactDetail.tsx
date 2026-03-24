@@ -1,6 +1,6 @@
 "use client";
 
-import _styles from "./ContactDetail.module.css";
+import styles from "./ContactDetail.module.css";
 
 interface ContactDetailProps {
   label: string;
@@ -9,9 +9,9 @@ interface ContactDetailProps {
 
 export default function ContactDetail({ label, value }: ContactDetailProps) {
   return (
-    <div className="contact-detail">
-      <div className="contact-detail-label">{label}</div>
-      <div className="contact-detail-value">{value}</div>
+    <div className={styles.contactDetail}>
+      <div className={styles.contactDetailLabel}>{label}</div>
+      <div className={styles.contactDetailValue}>{value}</div>
     </div>
   );
 }

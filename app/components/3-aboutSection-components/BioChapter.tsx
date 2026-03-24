@@ -1,6 +1,6 @@
 "use client";
 
-import _styles from "./BioChapter.module.css";
+import styles from "./BioChapter.module.css";
 
 interface BioChapterProps {
   index: number;
@@ -10,11 +10,11 @@ interface BioChapterProps {
 
 export default function BioChapter({ index, label, text }: BioChapterProps) {
   return (
-    <div className="bio-chapter">
-      <span className="bio-chapter-label">
+    <div className={styles.bioChapter}>
+      <span className={styles.bioChapterLabel}>
         {String(index + 1).padStart(2, "0")} / {label}
       </span>
-      <p className="bio-chapter-text">{text}</p>
+      <p className={styles.bioChapterText}>{text}</p>
     </div>
   );
 }

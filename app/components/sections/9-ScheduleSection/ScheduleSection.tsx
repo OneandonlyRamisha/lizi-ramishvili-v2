@@ -6,7 +6,8 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScheduleRow from "../../9-scheduleSection-components/ScheduleRow";
-import _styles from "./ScheduleSection.module.css";
+import styles from "./ScheduleSection.module.css";
+import rowStyles from "../../9-scheduleSection-components/ScheduleRow.module.css";
 
 const schedule = [
   {
@@ -77,18 +78,18 @@ export default function ScheduleSection() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
-      gsap.from(".schedule-heading", {
+      gsap.from(`.${styles.scheduleHeading}`, {
         opacity: 0,
         y: 60,
         duration: 1.3,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: ".schedule-heading",
+          trigger: `.${styles.scheduleHeading}`,
           start: "top 82%",
           once: true,
         },
       });
-      gsap.utils.toArray<HTMLElement>(".sched-row").forEach((row, i) => {
+      gsap.utils.toArray<HTMLElement>(`.${rowStyles.schedRow}`).forEach((row, i) => {
         gsap.from(row, {
           opacity: 0,
           clipPath: "inset(0 0 100% 0)",
@@ -96,7 +97,7 @@ export default function ScheduleSection() {
           delay: i * 0.09,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: ".sched-list",
+            trigger: `.${styles.schedList}`,
             start: "top 80%",
             once: true,
           },
@@ -107,12 +108,12 @@ export default function ScheduleSection() {
   }, []);
 
   return (
-    <section className="schedule-section" id="schedule" ref={containerRef}>
-      <div className="schedule-inner">
-        <div className="schedule-top">
+    <section className={styles.scheduleSection} id="schedule" ref={containerRef}>
+      <div className={styles.scheduleInner}>
+        <div className={styles.scheduleTop}>
           <div>
             <span className="section-label">006 / Schedule</span>
-            <h2 className="schedule-heading">
+            <h2 className={styles.scheduleHeading}>
               Upcoming
               <br />
               Performances
@@ -120,7 +121,7 @@ export default function ScheduleSection() {
           </div>
         </div>
 
-        <div className="sched-list" role="list">
+        <div className={styles.schedList} role="list">
           {schedule.map((ev, i) => (
             <ScheduleRow
               key={ev.id}

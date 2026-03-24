@@ -1,0 +1,47 @@
+/* ── REPERTOIRE PAGE ── */
+.repPage {
+  background: var(--bg-cream);
+  color: var(--text-primary);
+  min-height: 100vh;
+  padding: 5rem var(--gutter) 8rem;
+}
+
+.repPageInner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.repPageBack {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 4rem;
+  transition: color 0.3s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.repPageBack:hover {
+  color: var(--text-primary);
+}
+
+.repPageHeader {
+  margin-bottom: 4rem;
+}
+
+.repPageTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 6vw, 8rem);
+  font-weight: 700;
+  line-height: 0.9;
+  color: var(--text-primary);
+  margin-top: 1.5rem;
+}

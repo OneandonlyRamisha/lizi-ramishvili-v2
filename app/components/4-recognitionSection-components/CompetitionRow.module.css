@@ -1,72 +1,70 @@
-:global {
-  /* ── COMPETITION ROW ── */
-  .competition-row {
-    display: grid;
-    grid-template-columns: 72px 1fr auto;
-    gap: 2.5rem;
-    align-items: center;
-    padding: 1.6rem 0;
-    border-bottom: 1px solid rgba(247, 243, 238, 0.07);
-    transition: background 0.3s;
-  }
-  .competition-row:hover {
-    background: rgba(247, 243, 238, 0.02);
-  }
+/* ── COMPETITION ROW ── */
+.competitionRow {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 2.5rem;
+  align-items: center;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid rgba(247, 243, 238, 0.07);
+  transition: background 0.3s;
+}
+.competitionRow:hover {
+  background: rgba(247, 243, 238, 0.02);
+}
 
-  .comp-numeral {
-    font-family: var(--font-serif);
-    font-size: clamp(2.2rem, 4vw, 4rem);
-    font-weight: 900;
-    color: transparent;
-    -webkit-text-stroke: 1.5px var(--accent);
-    line-height: 1;
-    text-align: center;
-    flex-shrink: 0;
-  }
+.compNumeral {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--accent);
+  line-height: 1;
+  text-align: center;
+  flex-shrink: 0;
+}
 
-  .comp-prize {
-    display: block;
-    font-family: var(--font-sans);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.35rem;
-  }
+.compPrize {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
 
-  .comp-name {
-    font-family: var(--font-serif);
-    font-size: clamp(1rem, 1.8vw, 1.5rem);
-    font-weight: 600;
-    color: var(--text-inverse);
-    margin-bottom: 0.2rem;
-    line-height: 1.2;
-  }
+.compName {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.8vw, 1.5rem);
+  font-weight: 600;
+  color: var(--text-inverse);
+  margin-bottom: 0.2rem;
+  line-height: 1.2;
+}
 
-  .comp-location {
-    font-family: var(--font-sans);
-    font-size: 0.92rem;
-    color: var(--text-muted);
-    letter-spacing: 0.1em;
-  }
+.compLocation {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
 
-  .comp-year {
-    font-size: clamp(2rem, 4.5vw, 5rem);
-    font-weight: 800;
-    color: rgba(247, 243, 238, 0.06);
-    line-height: 1;
-    text-align: right;
-    flex-shrink: 0;
-    white-space: nowrap;
-  }
+.compYear {
+  font-size: clamp(2rem, 4.5vw, 5rem);
+  font-weight: 800;
+  color: rgba(247, 243, 238, 0.06);
+  line-height: 1;
+  text-align: right;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
 
-  @media (max-width: 900px) {
-    .competition-row {
-      grid-template-columns: 56px 1fr;
-    }
-    .comp-year {
-      display: none;
-    }
+@media (max-width: 900px) {
+  .competitionRow {
+    grid-template-columns: 56px 1fr;
+  }
+  .compYear {
+    display: none;
   }
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import _styles from "./ScholarshipItem.module.css";
+import styles from "./ScholarshipItem.module.css";
 
 interface ScholarshipItemProps {
   name: string;
@@ -9,9 +9,9 @@ interface ScholarshipItemProps {
 
 export default function ScholarshipItem({ name, note }: ScholarshipItemProps) {
   return (
-    <li className="scholarship-item">
-      <span className="scholarship-name">{name}</span>
-      <span className="scholarship-note">{note}</span>
+    <li className={styles.scholarshipItem}>
+      <span className={styles.scholarshipName}>{name}</span>
+      <span className={styles.scholarshipNote}>{note}</span>
     </li>
   );
 }
