@@ -4,10 +4,22 @@ import { Schedule } from '../../../lib/models/Schedule'
 import { verifyToken } from '../../../lib/auth'
 import { cookies } from 'next/headers'
 
+const MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
+
+function toTimestamp(ev: { day: string; month: string; year: string; time: string }): number {
+  const m = MONTHS.indexOf(ev.month.toUpperCase())
+  const [h = '0', min = '0'] = ev.time.split(':')
+  return new Date(
+    parseInt(ev.year), m, parseInt(ev.day),
+    parseInt(h), parseInt(min)
+  ).getTime()
+}
+
 // GET /api/schedule — public
 export async function GET() {
   await connectDB()
-  const events = await Schedule.find({}).sort({ id: 1 }).lean()
+  const events = await Schedule.find({}).lean()
+  events.sort((a, b) => toTimestamp(a as never) - toTimestamp(b as never))
   return NextResponse.json(events)
 }
 
