@@ -3,12 +3,21 @@ import { connectDB } from '../../../lib/mongodb'
 import { Schedule } from '../../../lib/models/Schedule'
 import { verifyToken } from '../../../lib/auth'
 import { cookies } from 'next/headers'
-
 // GET /api/schedule — public
 export async function GET() {
   await connectDB()
-  const events = await Schedule.find({}).sort({ id: 1 }).lean()
-  return NextResponse.json(events)
+  const MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
+  const events = await Schedule.find({}).lean()
+  const sorted = [...events].sort((a, b) => {
+    const ts = (e: typeof a) => {
+      const m = MONTHS.indexOf((e.month || '').toUpperCase())
+      if (m === -1) return 0
+      const [h = '0', min = '0'] = (e.time || '').split(':')
+      return new Date(+e.year, m, +e.day, +h, +min).getTime()
+    }
+    return ts(a) - ts(b)
+  })
+  return NextResponse.json(sorted)
 }
 
 // POST /api/schedule — admin only
