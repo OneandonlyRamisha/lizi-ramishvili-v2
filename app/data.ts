@@ -156,7 +156,7 @@ export const stages: StageData[] = [
     name: "Konzerthaus Berlin",
     location: "Berlin, Germany",
     festival: "Young Euro Classic",
-    image: null,
+    image: "/images/stages/konzerthaus.jpg",
   },
   {
     id: "schubertiade",
