@@ -4,8 +4,8 @@ import { signToken, safeCompare } from '../../../../lib/auth'
 export async function POST(req: NextRequest) {
   const { username, password } = await req.json()
 
-  const validUsername = safeCompare(username ?? '', process.env.USERNAME ?? '')
-  const validPassword = safeCompare(password ?? '', process.env.PASSWORD ?? '')
+  const validUsername = safeCompare(username ?? '', process.env.ADMIN_USERNAME ?? '')
+  const validPassword = safeCompare(password ?? '', process.env.ADMIN_PASSWORD ?? '')
 
   if (!validUsername || !validPassword) {
     // Small delay to slow brute-force attempts
