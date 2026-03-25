@@ -40,3 +40,13 @@
 .schedList {
   display: block;
 }
+
+.noEvents {
+  font-family: var(--font-sans);
+  font-size: clamp(0.82rem, 1.2vw, 0.95rem);
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  line-height: 1.8;
+  padding: 4rem 0;
+  border-top: 1px solid rgba(247, 243, 238, 0.12);
+}

@@ -58,22 +58,28 @@ export default function ScheduleSection({ events }: { events: ScheduleEventData[
           </div>
         </div>
 
-        <div className={styles.schedList} role="list">
-          {events.map((ev, i) => (
-            <ScheduleRow
-              key={ev.id}
-              day={ev.day}
-              month={ev.month}
-              year={ev.year}
-              time={ev.time}
-              venue={ev.venue}
-              city={ev.city}
-              programme={ev.programme}
-              status={ev.status}
-              link={ev.link}
-            />
-          ))}
-        </div>
+        {events.length === 0 ? (
+          <p className={styles.noEvents}>
+            No performances scheduled at this time. New dates will be announced soon.
+          </p>
+        ) : (
+          <div className={styles.schedList} role="list">
+            {events.map((ev, i) => (
+              <ScheduleRow
+                key={ev.id}
+                day={ev.day}
+                month={ev.month}
+                year={ev.year}
+                time={ev.time}
+                venue={ev.venue}
+                city={ev.city}
+                programme={ev.programme}
+                status={ev.status}
+                link={ev.link}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
