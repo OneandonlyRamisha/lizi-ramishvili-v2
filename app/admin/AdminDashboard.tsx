@@ -19,8 +19,34 @@ interface ScheduleEvent {
   link: string
 }
 
+const MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
+
+// Convert stored fields → input string "DD/MM/YYYY"
+function toDateInput(day: string, month: string, year: string): string {
+  const m = MONTHS.indexOf(month.toUpperCase())
+  if (m === -1) return `${day}/${month}/${year}`
+  return `${day.padStart(2,'0')}/${String(m + 1).padStart(2,'0')}/${year}`
+}
+
+// Parse "DD/MM/YYYY" → { day, month, year } with abbreviated month
+function parseDateInput(date: string): { day: string; month: string; year: string } | null {
+  const parts = date.split('/')
+  if (parts.length !== 3) return null
+  const [d, m, y] = parts
+  const monthIndex = parseInt(m, 10)
+  if (isNaN(monthIndex) || monthIndex < 1 || monthIndex > 12) return null
+  return { day: d, month: MONTHS[monthIndex - 1], year: y }
+}
+
+// Generate every 30-min slot in 24h format
+const TIME_OPTIONS = Array.from({ length: 48 }, (_, i) => {
+  const h = String(Math.floor(i / 2)).padStart(2, '0')
+  const m = i % 2 === 0 ? '00' : '30'
+  return `${h}:${m}`
+})
+
 const EMPTY_FORM = {
-  day: '', month: '', year: '', time: '',
+  date: '', time: '19:00',
   venue: '', city: '', programme: '', status: 'tickets' as Status, link: '#',
 }
 
@@ -41,8 +67,12 @@ export default function AdminDashboard({ initialEvents }: { initialEvents: Sched
   function startEdit(ev: ScheduleEvent) {
     setEditing(ev)
     setAdding(false)
-    setForm({ day: ev.day, month: ev.month, year: ev.year, time: ev.time,
-      venue: ev.venue, city: ev.city, programme: ev.programme, status: ev.status, link: ev.link })
+    setForm({
+      date: toDateInput(ev.day, ev.month, ev.year),
+      time: ev.time,
+      venue: ev.venue, city: ev.city, programme: ev.programme,
+      status: ev.status, link: ev.link,
+    })
     setError('')
   }
 
@@ -56,13 +86,19 @@ export default function AdminDashboard({ initialEvents }: { initialEvents: Sched
   function cancelForm() { setEditing(null); setAdding(false); setError('') }
 
   async function handleSave() {
+    const parsed = parseDateInput(form.date)
+    if (!parsed) {
+      setError('Invalid date. Use DD/MM/YYYY format (e.g. 14/04/2026).')
+      return
+    }
     setLoading(true); setError('')
+    const payload = { ...parsed, time: form.time, venue: form.venue, city: form.city, programme: form.programme, status: form.status, link: form.link }
     try {
       if (editing) {
         const res = await fetch(`/api/schedule/${editing._id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(form),
+          body: JSON.stringify(payload),
         })
         if (!res.ok) throw new Error(await res.text())
         const updated: ScheduleEvent = await res.json()
@@ -71,7 +107,7 @@ export default function AdminDashboard({ initialEvents }: { initialEvents: Sched
         const res = await fetch('/api/schedule', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(form),
+          body: JSON.stringify(payload),
         })
         if (!res.ok) throw new Error(await res.text())
         const created: ScheduleEvent = await res.json()
@@ -120,9 +156,27 @@ export default function AdminDashboard({ initialEvents }: { initialEvents: Sched
         <div style={s.formCard}>
           <h2 style={s.formTitle}>{adding ? 'Add Event' : 'Edit Event'}</h2>
           <div style={s.grid2}>
-            {(['day', 'month', 'year', 'time'] as const).map(k => (
-              <Field key={k} label={k} value={form[k]} onChange={v => setForm(f => ({ ...f, [k]: v }))} />
-            ))}
+            <div style={s.field}>
+              <label style={s.label}>Date (DD/MM/YYYY)</label>
+              <input
+                value={form.date}
+                onChange={e => setForm(f => ({ ...f, date: e.target.value }))}
+                placeholder="14/04/2026"
+                style={s.input}
+              />
+            </div>
+            <div style={s.field}>
+              <label style={s.label}>Time</label>
+              <select
+                value={form.time}
+                onChange={e => setForm(f => ({ ...f, time: e.target.value }))}
+                style={s.input}
+              >
+                {TIME_OPTIONS.map(t => (
+                  <option key={t} value={t}>{t}</option>
+                ))}
+              </select>
+            </div>
           </div>
           <div style={s.grid2}>
             {(['venue', 'city'] as const).map(k => (
