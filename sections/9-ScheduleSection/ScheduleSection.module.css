@@ -1,5 +1,6 @@
 /* ── SCHEDULE ── */
 .scheduleSection {
+  min-height: 100vh;
   background: var(--bg-dark);
   color: var(--text-inverse);
   padding: var(--section-pad) var(--gutter);
