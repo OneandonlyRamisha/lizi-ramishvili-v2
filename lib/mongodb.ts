@@ -1,0 +1,33 @@
+import mongoose from 'mongoose'
+
+const MONGODB_URI = process.env.DB_URI!
+
+if (!MONGODB_URI) {
+  throw new Error('DB_URI is not defined in environment variables')
+}
+
+// Cache connection across hot reloads in dev
+const globalWithMongoose = global as typeof globalThis & {
+  mongoose: { conn: typeof mongoose | null; promise: Promise<typeof mongoose> | null }
+}
+
+if (!globalWithMongoose.mongoose) {
+  globalWithMongoose.mongoose = { conn: null, promise: null }
+}
+
+const cached = globalWithMongoose.mongoose
+
+export async function connectDB() {
+  if (cached.conn) return cached.conn
+
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(MONGODB_URI, {
+      user: process.env.USERNAME,
+      pass: process.env.PASSWORD,
+      bufferCommands: false,
+    })
+  }
+
+  cached.conn = await cached.promise
+  return cached.conn
+}

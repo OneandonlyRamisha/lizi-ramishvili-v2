@@ -7,9 +7,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScheduleRow from "../../components/9-scheduleSection-components/ScheduleRow";
 import styles from "./ScheduleSection.module.css";
-import { schedule } from "../../app/data";
+import { ScheduleEventData } from "../../app/data";
 
-export default function ScheduleSection() {
+export default function ScheduleSection({ events }: { events: ScheduleEventData[] }) {
   const containerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export default function ScheduleSection() {
         </div>
 
         <div className={styles.schedList} role="list">
-          {schedule.map((ev, i) => (
+          {events.map((ev, i) => (
             <ScheduleRow
               key={ev.id}
               day={ev.day}

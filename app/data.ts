@@ -334,68 +334,8 @@ export interface ScheduleEventData {
   link: string;
 }
 
-export const schedule: ScheduleEventData[] = [
-  {
-    id: 1,
-    day: "14",
-    month: "APR",
-    year: "2026",
-    time: "19:30",
-    venue: "Wigmore Hall",
-    city: "London, United Kingdom",
-    programme: "Bach · Britten · Shostakovich",
-    status: "tickets",
-    link: "#",
-  },
-  {
-    id: 2,
-    day: "28",
-    month: "APR",
-    year: "2026",
-    time: "20:00",
-    venue: "Konzerthaus Berlin",
-    city: "Berlin, Germany",
-    programme: "Dvořák — Cello Concerto in B minor",
-    status: "tickets",
-    link: "#",
-  },
-  {
-    id: 3,
-    day: "12",
-    month: "MAY",
-    year: "2026",
-    time: "19:00",
-    venue: "Palau de la Música",
-    city: "Barcelona, Spain",
-    programme: "Elgar · Brahms — Sonata in E minor",
-    status: "enquire",
-    link: "#",
-  },
-  {
-    id: 4,
-    day: "03",
-    month: "JUN",
-    year: "2026",
-    time: "18:30",
-    venue: "Philharmonie de Paris",
-    city: "Paris, France",
-    programme: "Saint-Saëns · Debussy · Ravel",
-    status: "tickets",
-    link: "#",
-  },
-  {
-    id: 5,
-    day: "19",
-    month: "JUL",
-    year: "2026",
-    time: "21:00",
-    venue: "Tbilisi Concert Hall",
-    city: "Tbilisi, Georgia",
-    programme: "Solo Recital — Six Suites for Cello, J.S. Bach",
-    status: "sold-out",
-    link: "#",
-  },
-];
+// Schedule data is now managed via MongoDB.
+// Use the seed script to populate: npx ts-node scripts/seed-schedule.ts
 
 // ── CONTACT ──
 

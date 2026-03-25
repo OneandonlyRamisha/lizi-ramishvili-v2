@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Nav from "./0-general/Nav";
+import { ScheduleEventData } from "../app/data";
 import HeroSection from "../sections/1-HeroSection/HeroSection";
 import MarqueeSection from "../sections/2-MarqueeSection/MarqueeSection";
 import AboutSection from "../sections/3-AboutSection/AboutSection";
@@ -13,7 +14,7 @@ import PressSection from "../sections/8-PressSection/PressSection";
 import ScheduleSection from "../sections/9-ScheduleSection/ScheduleSection";
 import ContactSection from "../sections/10-ContactSection/ContactSection";
 
-export default function HomePage() {
+export default function HomePage({ scheduleEvents = [] }: { scheduleEvents?: ScheduleEventData[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLDivElement>(null);
   const firstNavLinkRef = useRef<HTMLAnchorElement>(null);
@@ -51,7 +52,7 @@ export default function HomePage() {
         <RepertoireSection />
         <StagesSection />
         <PressSection />
-        <ScheduleSection />
+        <ScheduleSection events={scheduleEvents} />
         <ContactSection />
       </div>
     </div>
