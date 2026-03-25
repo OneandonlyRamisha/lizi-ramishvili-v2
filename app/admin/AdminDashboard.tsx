@@ -21,29 +21,30 @@ interface ScheduleEvent {
 
 const MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
 
-// Convert stored fields → input string "DD/MM/YYYY"
+// Stored fields → "YYYY-MM-DD" (native date input format)
 function toDateInput(day: string, month: string, year: string): string {
   const m = MONTHS.indexOf(month.toUpperCase())
-  if (m === -1) return `${day}/${month}/${year}`
-  return `${day.padStart(2,'0')}/${String(m + 1).padStart(2,'0')}/${year}`
+  if (m === -1) return ''
+  return `${year}-${String(m + 1).padStart(2,'0')}-${day.padStart(2,'0')}`
 }
 
-// Parse "DD/MM/YYYY" → { day, month, year } with abbreviated month
+// "YYYY-MM-DD" → { day, month, year } with abbreviated month
 function parseDateInput(date: string): { day: string; month: string; year: string } | null {
-  const parts = date.split('/')
-  if (parts.length !== 3) return null
-  const [d, m, y] = parts
+  if (!date) return null
+  const [y, m, d] = date.split('-')
   const monthIndex = parseInt(m, 10)
   if (isNaN(monthIndex) || monthIndex < 1 || monthIndex > 12) return null
   return { day: d, month: MONTHS[monthIndex - 1], year: y }
 }
 
-// Generate every 30-min slot in 24h format
+// Every 30-min slot in 24h format
 const TIME_OPTIONS = Array.from({ length: 48 }, (_, i) => {
   const h = String(Math.floor(i / 2)).padStart(2, '0')
   const m = i % 2 === 0 ? '00' : '30'
   return `${h}:${m}`
 })
+
+const CUSTOM_SENTINEL = '__custom__'
 
 const EMPTY_FORM = {
   date: '', time: '19:00',
@@ -56,6 +57,7 @@ export default function AdminDashboard({ initialEvents }: { initialEvents: Sched
   const [editing, setEditing] = useState<ScheduleEvent | null>(null)
   const [adding, setAdding] = useState(false)
   const [form, setForm] = useState(EMPTY_FORM)
+  const [customTime, setCustomTime] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
@@ -67,6 +69,8 @@ export default function AdminDashboard({ initialEvents }: { initialEvents: Sched
   function startEdit(ev: ScheduleEvent) {
     setEditing(ev)
     setAdding(false)
+    const isCustom = !TIME_OPTIONS.includes(ev.time)
+    setCustomTime(isCustom)
     setForm({
       date: toDateInput(ev.day, ev.month, ev.year),
       time: ev.time,
@@ -79,16 +83,31 @@ export default function AdminDashboard({ initialEvents }: { initialEvents: Sched
   function startAdd() {
     setAdding(true)
     setEditing(null)
+    setCustomTime(false)
     setForm(EMPTY_FORM)
     setError('')
   }
 
-  function cancelForm() { setEditing(null); setAdding(false); setError('') }
+  function cancelForm() { setEditing(null); setAdding(false); setCustomTime(false); setError('') }
+
+  function handleTimeSelect(value: string) {
+    if (value === CUSTOM_SENTINEL) {
+      setCustomTime(true)
+      setForm(f => ({ ...f, time: '' }))
+    } else {
+      setCustomTime(false)
+      setForm(f => ({ ...f, time: value }))
+    }
+  }
 
   async function handleSave() {
     const parsed = parseDateInput(form.date)
     if (!parsed) {
-      setError('Invalid date. Use DD/MM/YYYY format (e.g. 14/04/2026).')
+      setError('Please select a valid date.')
+      return
+    }
+    if (!form.time.trim()) {
+      setError('Please enter a time.')
       return
     }
     setLoading(true); setError('')
@@ -157,25 +176,42 @@ export default function AdminDashboard({ initialEvents }: { initialEvents: Sched
           <h2 style={s.formTitle}>{adding ? 'Add Event' : 'Edit Event'}</h2>
           <div style={s.grid2}>
             <div style={s.field}>
-              <label style={s.label}>Date (DD/MM/YYYY)</label>
+              <label style={s.label}>Date</label>
               <input
+                type="date"
                 value={form.date}
                 onChange={e => setForm(f => ({ ...f, date: e.target.value }))}
-                placeholder="14/04/2026"
                 style={s.input}
               />
             </div>
             <div style={s.field}>
               <label style={s.label}>Time</label>
-              <select
-                value={form.time}
-                onChange={e => setForm(f => ({ ...f, time: e.target.value }))}
-                style={s.input}
-              >
-                {TIME_OPTIONS.map(t => (
-                  <option key={t} value={t}>{t}</option>
-                ))}
-              </select>
+              {customTime ? (
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                  <input
+                    value={form.time}
+                    onChange={e => setForm(f => ({ ...f, time: e.target.value }))}
+                    placeholder="e.g. 21:15"
+                    style={{ ...s.input, flex: 1 }}
+                  />
+                  <button
+                    onClick={() => { setCustomTime(false); setForm(f => ({ ...f, time: '19:00' })) }}
+                    style={s.btnGhost}
+                    title="Back to list"
+                  >↩</button>
+                </div>
+              ) : (
+                <select
+                  value={form.time}
+                  onChange={e => handleTimeSelect(e.target.value)}
+                  style={s.input}
+                >
+                  {TIME_OPTIONS.map(t => (
+                    <option key={t} value={t}>{t}</option>
+                  ))}
+                  <option value={CUSTOM_SENTINEL}>Custom…</option>
+                </select>
+              )}
             </div>
           </div>
           <div style={s.grid2}>
