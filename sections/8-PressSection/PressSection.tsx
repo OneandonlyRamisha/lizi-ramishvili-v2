@@ -46,7 +46,7 @@ export default function PressSection() {
   }, []);
 
   return (
-    <section className={styles.gallerySection} id="gallery" ref={containerRef}>
+    <section className={styles.gallerySection} id="press" ref={containerRef}>
       <div className={styles.galleryInner}>
         <span className="section-label">005 / Press</span>
         <h2 className={styles.galleryHeading}>

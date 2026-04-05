@@ -62,21 +62,21 @@ export const competitions: CompetitionData[] = [
     numeral: "I",
     prize: "Grand Prix",
     name: "Renaissance International Competition",
-    year: null,
+    year: "2010",
     location: "Armenia",
   },
   {
     numeral: "✦",
-    prize: "National Winner — International Final",
+    prize: "National Winner",
     name: "Classical Eurovision Competition",
     year: "2012",
     location: "Georgia",
   },
   {
     numeral: "✦",
-    prize: "Special Finalist Prize · €1,000",
+    prize: "Special Finalist Prize",
     name: "Classic Strings Cello Competition",
-    year: null,
+    year: "2022",
     location: "International",
   },
 ];
@@ -116,61 +116,65 @@ export const scholarships: ScholarshipData[] = [
   { name: "Boris Ustinov Foundation", note: "Full scholarship" },
 ];
 
-// ── STAGES ──
+// ── GALLERY ──
 
-export const STAGES_ALSO =
-  "Barbican London · Musica Mundi · Al Bustan Festival · Kronberg Academy · Ruhr Piano Festival · Casals Festival · ";
-
-export interface StageData {
+export interface GalleryImageData {
   id: string;
-  name: string;
+  src: string;
+  alt: string;
+  title: string;
   location: string;
-  festival: string | null;
-  image: string | null;
+  sizes: string;
 }
 
-export const stages: StageData[] = [
+export const galleryImages: GalleryImageData[] = [
   {
     id: "carnegie",
-    name: "Carnegie Hall",
+    src: "/images/stages/carnegie-hall.jpg",
+    alt: "Carnegie Hall performance",
+    title: "Carnegie Hall",
     location: "New York, USA",
-    festival: null,
-    image: "/images/stages/carnegie-hall.jpg",
+    sizes: "(max-width:860px) 100vw, 58vw",
   },
   {
     id: "kloster",
-    name: "Kloster Eberbach",
+    src: "/images/stages/kloster-eberbach.jpg",
+    alt: "Kloster Eberbach, Rheingau Musik Festival",
+    title: "Rheingau Musik Festival",
     location: "Rheingau, Germany",
-    festival: "Rheingau Musik Festival",
-    image: "/images/stages/kloster-eberbach.jpg",
+    sizes: "(max-width:860px) 100vw, 42vw",
+  },
+  {
+    id: "konzerthaus",
+    src: "/images/stages/konzerthaus.jpg",
+    alt: "Konzerthaus Berlin, Young Euro Classic",
+    title: "Konzerthaus Berlin",
+    location: "Berlin, Germany",
+    sizes: "(max-width:860px) 100vw, 42vw",
   },
   {
     id: "tbilisi",
-    name: "Tbilisi Conservatoire",
+    src: "/images/stages/tbilisi-conservatoire.jpg",
+    alt: "Tbilisi Conservatoire performance",
+    title: "Tbilisi Conservatoire",
     location: "Tbilisi, Georgia",
-    festival: "International Rostropovich Festival",
-    image: "/images/stages/tbilisi-conservatoire.jpg",
+    sizes: "(max-width:860px) 100vw, 33vw",
   },
   {
-    id: "berlin",
-    name: "Konzerthaus Berlin",
-    location: "Berlin, Germany",
-    festival: "Young Euro Classic",
-    image: "/images/stages/konzerthaus.jpg",
+    id: "performance",
+    src: "/images/biography/bio2.jpg",
+    alt: "Lizi Ramishvili performing",
+    title: "In Concert",
+    location: "Chamber Recital",
+    sizes: "(max-width:860px) 100vw, 33vw",
   },
   {
-    id: "schubertiade",
-    name: "Schubertiade",
-    location: "Schwarzenberg, Austria",
-    festival: "Schubertiade Festival",
-    image: null,
-  },
-  {
-    id: "gstaad",
-    name: "Sommets Musicaux",
-    location: "Gstaad, Switzerland",
-    festival: "Sommets Musicaux de Gstaad",
-    image: null,
+    id: "festival",
+    src: "/images/biography/bio1.jpg",
+    alt: "Lizi Ramishvili at festival",
+    title: "Festival Artist",
+    location: "Kronberg · Gstaad · Rheingau",
+    sizes: "(max-width:860px) 100vw, 33vw",
   },
 ];
 
@@ -380,13 +384,4 @@ export interface ScheduleEventData {
 
 // ── CONTACT ──
 
-export interface ContactDetailData {
-  label: string;
-  value: string;
-}
-
-export const contactDetails: ContactDetailData[] = [
-  { label: "Management", value: "management@liziramishvili.com" },
-  { label: "Bookings", value: "bookings@liziramishvili.com" },
-  { label: "Press & Media", value: "press@liziramishvili.com" },
-];
+export const CONTACT_EMAIL = "lizi_ramishvili@yahoo.com";

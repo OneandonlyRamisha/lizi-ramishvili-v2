@@ -2,24 +2,22 @@
 .contactSection {
   background: var(--bg-cream);
   color: var(--text-primary);
-  padding: var(--section-pad) var(--gutter) 5rem;
+  padding: var(--section-pad) var(--gutter) 4rem;
   position: relative;
   overflow: hidden;
 }
 
-.contactBgText {
+/* Giant musical note watermark */
+.bgGlyph {
   position: absolute;
-  top: 0;
-  left: -2%;
-  font-family: var(--font-serif);
-  font-size: clamp(8rem, 18vw, 26rem);
-  font-weight: 900;
+  top: -8%;
+  right: -6%;
+  font-size: clamp(20rem, 42vw, 56rem);
+  line-height: 1;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(20, 18, 16, 0.05);
-  line-height: 0.85;
+  -webkit-text-stroke: 1.5px rgba(20, 18, 16, 0.04);
   pointer-events: none;
   user-select: none;
-  white-space: nowrap;
 }
 
 .contactInner {
@@ -29,33 +27,84 @@
   z-index: 1;
 }
 
-.contactHeading {
-  font-family: var(--font-serif);
-  font-size: clamp(4rem, 9vw, 13rem);
-  font-weight: 900;
-  line-height: 0.85;
-  color: var(--text-primary);
-  margin-bottom: 6rem;
+.topRow {
+  margin-bottom: 2rem;
+}
+
+/* ── HEADING ── */
+.headingBlock {
+  margin-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.headingLineWrap {
   overflow: hidden;
 }
 
-.contactAccent {
+.headingLine {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: clamp(4.5rem, 10vw, 14rem);
+  font-weight: 900;
+  line-height: 0.88;
+  color: var(--text-primary);
+  will-change: transform;
+}
+
+.headingAccent {
+  color: var(--accent);
+  font-style: italic;
+}
+
+/* ── EMAIL BLOCK ── */
+.emailBlock {
+  margin-bottom: clamp(5rem, 10vw, 8rem);
+  border-top: 1px solid rgba(20, 18, 16, 0.08);
+  border-bottom: 1px solid rgba(20, 18, 16, 0.08);
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.emailLabel {
+  font-family: var(--font-sans);
+  font-size: clamp(0.7rem, 1vw, 0.85rem);
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.emailLink {
+  display: inline-flex;
+  align-items: baseline;
+  gap: clamp(0.8rem, 1.5vw, 1.5rem);
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3.5vw, 3.2rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.35s ease;
+}
+
+.emailLink:hover {
   color: var(--accent);
 }
 
-.contactGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(3rem, 6vw, 8rem);
-  align-items: start;
-  margin-bottom: 7rem;
+.emailLink:hover .emailArrow {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.contactInfo h3 {
-  font-family: var(--font-serif);
-  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
-  font-weight: 600;
-  margin-bottom: 2.5rem;
+.emailArrow {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 2vw, 1.6rem);
+  color: var(--accent);
+  opacity: 0;
+  transform: translateX(-10px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
 }
 
 /* ── FOOTER ── */
@@ -104,10 +153,30 @@
   text-transform: uppercase;
   color: var(--text-muted);
   text-decoration: none;
+  position: relative;
   transition: color 0.3s;
 }
+
+.footerSocialLink::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
 .footerSocialLink:hover {
   color: var(--text-primary);
+}
+
+.footerSocialLink:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .footerCopy {
@@ -134,20 +203,25 @@
   font-weight: 600;
   transition: color 0.3s;
 }
+
 .footerCredit:hover {
   color: var(--accent);
 }
 
-@media (max-width: 900px) {
-  .contactGrid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-}
-
+/* ── RESPONSIVE ── */
 @media (max-width: 600px) {
-  .footer {
+  .emailArrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .footerTop,
+  .footerBottom {
     flex-direction: column;
     text-align: center;
+  }
+
+  .footerSocials {
+    gap: 1.5rem;
   }
 }

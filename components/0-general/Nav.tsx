@@ -49,7 +49,7 @@ export default function Nav({ mobileNavOpen, setMobileNavOpen, firstNavLinkRef }
           <li><a href="#about">About</a></li>
           <li><a href="#recognition">Recognition</a></li>
           <li><a href="#repertoire">Repertoire</a></li>
-          <li><a href="#gallery">Press</a></li>
+          {/* <li><a href="#gallery">Gallery</a></li> */}
           <li><a href="#schedule">Schedule</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -64,7 +64,7 @@ export default function Nav({ mobileNavOpen, setMobileNavOpen, firstNavLinkRef }
           ["#about", "About"],
           ["#recognition", "Recognition"],
           ["#repertoire", "Repertoire"],
-          ["#gallery", "Press"],
+          // ["#gallery", "Gallery"],
           ["#schedule", "Schedule"],
           ["#contact", "Contact"],
         ].map(([href, label], idx) => (
